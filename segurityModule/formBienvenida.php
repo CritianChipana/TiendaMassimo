@@ -23,9 +23,11 @@ class formBienvenida
 			for($i = 0; $i < $numero; $i++)
 			{
 				?>
-				<form action="<?php echo $listaPrivilegios[$i]['nombre']?>" method="post">
+				<form action="<?php echo $listaPrivilegios[$i]['link']?>" method="post">
 					<p><?php echo $listaPrivilegios[$i]['nombre']; ?></p>
-					<input name="<?php /* echo $listaPrivilegios[$i]['link'] */?>" type="submit" value="<?php /* echo $listaPrivilegios[$i]['labelPriv'] */?>" />
+					<p><?php echo $listaPrivilegios[$i]['apellidos']; ?></p>
+					<p><?php echo $listaPrivilegios[$i]['estado']; ?></p>
+					<input name="<?php /* echo $listaPrivilegios[$i]['link'] */?>" type="submit" value="<?php echo $listaPrivilegios[$i]['nombre']?>" />
 				</form>
 				<br />
 				<?php

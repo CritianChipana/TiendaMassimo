@@ -7,7 +7,7 @@ if(isset($_POST['bntAceptar']))
 	$login = strtolower(trim($_POST['login']));
 	$password = $_POST['password'];
 
-	if(strlen($login)<4 or strlen($password)<4)
+	if(strlen($login)<3 or strlen($password)<3)
 	{
 		
 		include_once("../shared/formMensajeSistema.php");
