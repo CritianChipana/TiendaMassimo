@@ -1,7 +1,7 @@
 <?php
 
 
-include_once('conexion.php');
+include_once('../conexion.php');
 class EntidadBuscarComprobante extends conexion{
     
     public function validadComprobante($codigo,$tipo){

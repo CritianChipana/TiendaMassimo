@@ -1,21 +1,15 @@
 <?php
-
-
-
-class conexion{
-
-    public function conectar(){
-        $cn = mysqli_connect('localhost','root','12345678','comprobante');
-        return $cn;
-    }
-
-    protected function desconectar(){
-        return mysqli_close($this->conectar());
-    }
-
+class conexion
+{
+	protected function conectar()
+	{
+		$a =mysqli_connect('localhost','root','12345678','restaurante');
+		// mysqli_select_db('sistema');
+		return $a;
+	}
+	protected function desConectar()
+	{
+		mysqli_close($this->conectar());
+	}
 }
-
 ?>
-
-
-
