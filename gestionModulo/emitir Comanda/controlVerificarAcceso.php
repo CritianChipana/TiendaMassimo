@@ -12,6 +12,8 @@ if(isset($_POST[4])){
 
 
 //prueba
+
+    // segundo  modificar
 }else{
     include_once("../../shared/formMensajeSistema.php");
     $objetoMensaje = new formMensajeSistema;
