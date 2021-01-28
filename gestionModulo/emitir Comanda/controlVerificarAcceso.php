@@ -11,7 +11,7 @@ if(isset($_POST[4])){
     $objetoComanda ->formGenerarComandaShow($lista);
 
 
-
+//prueba
 }else{
     include_once("../../shared/formMensajeSistema.php");
     $objetoMensaje = new formMensajeSistema;
