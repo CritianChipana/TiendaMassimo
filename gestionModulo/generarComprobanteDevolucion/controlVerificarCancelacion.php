@@ -13,7 +13,7 @@ if(isset($_POST['botoncancelarpedido'])){
       
     
     }else{
-        include_once("../shared/formMensajeSistema.php");
+        include_once("../../shared/formMensajeSistema.php");
         
         $objetoMensaje = new formMensajeSistema;
         $objetoMensaje -> formMensajeSistemaShow("ACCESO NO PERMITIDO","<a href='../index.php'>Iniciar Session</a>");

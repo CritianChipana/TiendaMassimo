@@ -27,13 +27,18 @@ class formBienvenida
 					<p><?php echo $listaPrivilegios[$i]['nombre']; ?></p>
 					<p><?php echo $listaPrivilegios[$i]['apellidos']; ?></p>
 					<p><?php echo $listaPrivilegios[$i]['estado']; ?></p>
-					<input name="<?php /* echo $listaPrivilegios[$i]['link'] */?>" type="submit" value="<?php echo $listaPrivilegios[$i]['nombre']?>" />
+					<input type="text" name="dni" value="<?php echo $listaPrivilegios[$i]['DNI']; ?>" id="" hidden>
+					<input type="text" name="apellido" value="<?php echo $listaPrivilegios[$i]['apellidos']; ?>" id="" hidden>
+					<input name="<?php echo $listaPrivilegios[$i]['idprivilegio'] ?>" type="submit" value="<?php echo $listaPrivilegios[$i]['nombre']?>" />
 				</form>
 				<br />
 				<?php
 			}
 		?>
-	
+
+	<form action="../gestionModulo/emitir Comanda/controlVerificarAcceso.php" method="post">
+		<input  name="4" type="submit" value="enviar">
+	</form>
 	</body>
 	</html>
 	<?php	

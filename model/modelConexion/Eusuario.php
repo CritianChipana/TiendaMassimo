@@ -1,6 +1,7 @@
 <?php
 // include_once("conexion.php");
-include("../model/conexion.php");
+// include_once("../../model/conexion.php");
+include_once("../model/conexion.php");
 class Eusuario extends conexion
 {
 	public function Eusuario()

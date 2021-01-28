@@ -1,4 +1,5 @@
 <?php
+// include_once("../../model/conexion.php");
 include_once("../model/conexion.php");
 class EdetalleUsuario extends conexion
 {
@@ -8,11 +9,9 @@ class EdetalleUsuario extends conexion
 	}
 	public function obtenerPrivilegios($login)
 	{
-		// $consulta = "SELECT nombre, apellidos, celular
-		//              FROM usuario
-		// 			 WHERE dni= $login";  U.apellido, U.estado
 
-		$consulta = "SELECT P.nombre ,P.link,U.apellidos, U.estado
+
+		$consulta = "SELECT P.nombre ,P.link,U.apellidos, U.estado, P.idprivilegio, U.DNI
 		             FROM usuario U, privilegios P, usuarioprivilegio DU
 					 WHERE U.DNI = '$login' AND
 					       U.DNI = DU.DNI AND
