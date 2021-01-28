@@ -11,7 +11,7 @@ if(isset($_POST[4])){
     $objetoComanda ->formGenerarComandaShow($lista);
 
 
-//prueba
+//prueba numero 2
 
     // segundo  modificar
 }else{
