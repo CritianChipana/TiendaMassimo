@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
+<<<<<<< HEAD:restaurante.sql
 -- Tiempo de generación: 29-01-2021 a las 06:19:28
+=======
+-- Tiempo de generación: 29-01-2021 a las 15:03:56
+>>>>>>> ef5d9b1297ed8e0fa0ead2535bbbe450c03f7f10:restaurante .sql
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -130,7 +134,11 @@ CREATE TABLE `factura` (
 
 CREATE TABLE `privilegios` (
   `idprivilegio` int(11) NOT NULL,
+<<<<<<< HEAD:restaurante.sql
   `nombre` varchar(20) DEFAULT NULL,
+=======
+  `nombrep` varchar(20) DEFAULT NULL,
+>>>>>>> ef5d9b1297ed8e0fa0ead2535bbbe450c03f7f10:restaurante .sql
   `link` varchar(100) DEFAULT NULL,
   `foto` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -143,7 +151,12 @@ INSERT INTO `privilegios` (`idprivilegio`, `nombre`, `link`, `foto`) VALUES
 (1, 'emitir devolucion', 'cajero', 'np.jpg'),
 (2, 'emitir proforma', 'modelo', 'a.png'),
 (3, 'emitir boleta', 'modelo', 'as.png'),
+<<<<<<< HEAD:restaurante.sql
 (4, 'generar Comanda', '../gestionModulo/emitir Comanda/controlVerificarAcceso.php', 'as.jpg');
+=======
+(4, 'generar Comanda', '../gestionModulo/emitir Comanda/controlVerificarAcceso.php', 'as.jpg'),
+(5, 'gestionar comprobant', '../Controlador/controlVerificarAccesoComprobante.php', 'as.jpg');
+>>>>>>> ef5d9b1297ed8e0fa0ead2535bbbe450c03f7f10:restaurante .sql
 
 -- --------------------------------------------------------
 
@@ -229,7 +242,12 @@ INSERT INTO `usuarioprivilegio` (`idDetatallePrivilegio`, `DNI`, `idprivilegio`)
 (3, 1234567, 3),
 (4, 1234, 1),
 (5, 1234, 2),
+<<<<<<< HEAD:restaurante.sql
 (6, 1234567, 4);
+=======
+(6, 1234567, 4),
+(7, 1234567, 5);
+>>>>>>> ef5d9b1297ed8e0fa0ead2535bbbe450c03f7f10:restaurante .sql
 
 --
 -- Índices para tablas volcadas
