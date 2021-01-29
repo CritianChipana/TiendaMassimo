@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
-<<<<<<< HEAD:restaurante.sql
--- Tiempo de generación: 29-01-2021 a las 06:19:28
-=======
--- Tiempo de generación: 29-01-2021 a las 15:03:56
->>>>>>> ef5d9b1297ed8e0fa0ead2535bbbe450c03f7f10:restaurante .sql
+-- Tiempo de generación: 29-01-2021 a las 19:14:51
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -46,11 +42,11 @@ CREATE TABLE `boleta` (
 
 CREATE TABLE `comanda` (
   `idcomanda` int(11) NOT NULL,
+  `empleado` varchar(30) NOT NULL,
   `DNI` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
-  `estado` varchar(20) DEFAULT NULL,
+  `estadocomprobante` varchar(20) DEFAULT NULL,
   `dniCliente` char(18) DEFAULT NULL,
-  `empleado` varchar(30) NOT NULL,
   `importe` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -58,12 +54,12 @@ CREATE TABLE `comanda` (
 -- Volcado de datos para la tabla `comanda`
 --
 
-INSERT INTO `comanda` (`idcomanda`, `DNI`, `fecha`, `estado`, `dniCliente`, `empleado`, `importe`) VALUES
-(1, 1234567, '0000-00-00', '1', '74306285', '', 0),
-(2, 1234567, '0000-00-00', '1', '74306285', '', 0),
-(3, 1234567, '2021-01-05', '1', '74306285', '', 0),
-(4, 1234567, '2021-01-20', '1', '74306285', '', 0),
-(5, 1234567, '2021-01-20', '1', '74306285', '', 0);
+INSERT INTO `comanda` (`idcomanda`, `empleado`, `DNI`, `fecha`, `estadocomprobante`, `dniCliente`, `importe`) VALUES
+(1, 'Marina del Bosque', 1234567, '2021-01-29', '1', '74306285', 121),
+(2, 'Marcos de la Prada', 1234567, '2021-01-21', '1', '74306285', 102),
+(3, 'Jorge Torres', 1234567, '2021-01-05', '1', '74306285', 86),
+(4, 'David Rios', 1234567, '2021-01-20', '1', '74306285', 40),
+(5, 'Sheyla Auqui', 1234567, '2021-01-20', '1', '74306285', 51);
 
 -- --------------------------------------------------------
 
@@ -92,24 +88,24 @@ CREATE TABLE `detalleproforma` (
 
 CREATE TABLE `detalle_comanda` (
   `iddetalle_comanda` int(11) NOT NULL,
-  `cantidad` char(18) DEFAULT NULL,
-  `precio` int(11) DEFAULT NULL,
+  `idcomanda` int(11) DEFAULT NULL,
   `idProducto` int(11) DEFAULT NULL,
-  `idcomanda` int(11) DEFAULT NULL
+  `cantidad` char(18) DEFAULT NULL,
+  `precio` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `detalle_comanda`
 --
 
-INSERT INTO `detalle_comanda` (`iddetalle_comanda`, `cantidad`, `precio`, `idProducto`, `idcomanda`) VALUES
-(1, '2', NULL, 1, 1),
-(2, '1', NULL, 2, 1),
-(3, '2', NULL, 2, 2),
-(4, '1', NULL, 1, 3),
-(5, '1', NULL, 2, 3),
-(6, '1', NULL, 3, 4),
-(7, '1', NULL, 2, 5);
+INSERT INTO `detalle_comanda` (`iddetalle_comanda`, `idcomanda`, `idProducto`, `cantidad`, `precio`) VALUES
+(1, 1, 1, '2', 70),
+(2, 1, 2, '1', 51),
+(3, 2, 2, '2', 102),
+(4, 3, 1, '1', 35),
+(5, 3, 2, '1', 51),
+(6, 4, 3, '1', 40),
+(7, 5, 2, '1', 51);
 
 -- --------------------------------------------------------
 
@@ -134,11 +130,7 @@ CREATE TABLE `factura` (
 
 CREATE TABLE `privilegios` (
   `idprivilegio` int(11) NOT NULL,
-<<<<<<< HEAD:restaurante.sql
-  `nombre` varchar(20) DEFAULT NULL,
-=======
   `nombrep` varchar(20) DEFAULT NULL,
->>>>>>> ef5d9b1297ed8e0fa0ead2535bbbe450c03f7f10:restaurante .sql
   `link` varchar(100) DEFAULT NULL,
   `foto` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -147,16 +139,11 @@ CREATE TABLE `privilegios` (
 -- Volcado de datos para la tabla `privilegios`
 --
 
-INSERT INTO `privilegios` (`idprivilegio`, `nombre`, `link`, `foto`) VALUES
+INSERT INTO `privilegios` (`idprivilegio`, `nombrep`, `link`, `foto`) VALUES
 (1, 'emitir devolucion', 'cajero', 'np.jpg'),
 (2, 'emitir proforma', 'modelo', 'a.png'),
 (3, 'emitir boleta', 'modelo', 'as.png'),
-<<<<<<< HEAD:restaurante.sql
-(4, 'generar Comanda', '../gestionModulo/emitir Comanda/controlVerificarAcceso.php', 'as.jpg');
-=======
-(4, 'generar Comanda', '../gestionModulo/emitir Comanda/controlVerificarAcceso.php', 'as.jpg'),
-(5, 'gestionar comprobant', '../Controlador/controlVerificarAccesoComprobante.php', 'as.jpg');
->>>>>>> ef5d9b1297ed8e0fa0ead2535bbbe450c03f7f10:restaurante .sql
+(4, 'gestionarcomprobante', '../Controlador/controlVerificarAccesoComprobante.php', 'as.jpg');
 
 -- --------------------------------------------------------
 
@@ -217,6 +204,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`DNI`, `password`, `nombre`, `apellidos`, `estado`, `celular`, `direccion`, `correo`) VALUES
+(123, '123', 'Luis Gabriel', 'Coaquira Calloapaza', '1', '938165285', 'Mz P, Lt 10, St,20', 'kidmeg100@hotmail.co'),
 (1234, '1234', 'camilo', 'Chipana', '1', '986661493', 'Bolivar', 'tucariñoso@gmail.com'),
 (1234567, '1234567', 'cristian', 'Chipana', '1', '986661493', 'km 40', 'tucariñoso@gmail.com');
 
@@ -242,12 +230,8 @@ INSERT INTO `usuarioprivilegio` (`idDetatallePrivilegio`, `DNI`, `idprivilegio`)
 (3, 1234567, 3),
 (4, 1234, 1),
 (5, 1234, 2),
-<<<<<<< HEAD:restaurante.sql
-(6, 1234567, 4);
-=======
 (6, 1234567, 4),
-(7, 1234567, 5);
->>>>>>> ef5d9b1297ed8e0fa0ead2535bbbe450c03f7f10:restaurante .sql
+(7, 123, 4);
 
 --
 -- Índices para tablas volcadas
@@ -383,7 +367,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuarioprivilegio`
 --
 ALTER TABLE `usuarioprivilegio`
-  MODIFY `idDetatallePrivilegio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idDetatallePrivilegio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
