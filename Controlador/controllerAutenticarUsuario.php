@@ -1,11 +1,10 @@
 <?php
-//controllerAutenticarUsuario.php
 class controllerAutenticarUsuario
 {
 	public function verificarUsuario($login,$password)
 	{
 		// include_once("../model/Eusuario.php");
-		include_once("../model/modelConexion/Eusuario.php");
+		include_once("../Modelo/Eusuario.php");
 		$objUser  = new Eusuario;
 		// $password = md5($password);
 		$respuesta = $objUser -> validarUsuario($login,$password);
@@ -18,8 +17,8 @@ class controllerAutenticarUsuario
 		else
 		{
 			// include_once("../model/EdetalleUsuario.php");
-			include_once("../model/modelConexion/EdetalleUsuario.php");
-			include_once("formBienvenida.php");
+			include_once("../Modelo/EdetalleUsuario.php");
+			include_once("../Vista/formBienvenida.php");
 			$objDetalle = new EdetalleUsuario;
 			$objBienvenida = new formBienvenida;
 			$listaPrivilegios = $objDetalle -> obtenerPrivilegios($login);

@@ -1,0 +1,60 @@
+body{
+    background-color:#dee2e6;
+  
+}
+ table.dataTable thead {
+    background: #007bff;
+    color:white;
+}
+div.dataTables_wrapper div.dataTables_filter {
+  text-align: initial !important;
+}
+table.dataTable thead {
+  background: #0097a7 !important;
+}
+.btn-primary {
+  
+}
+.btn-danger {
+  
+  border-color: #dc3545 !important;
+}
+.custom-select-sm {
+  height: 3rem !important;
+}
+.form-control-sm {
+  font-size: 1.5rem !important;
+}
+.caja{
+  /* border: 1px solid; */
+  padding: 5px;
+  box-shadow: 10px 10px 50px 1px #7c7c81;
+  border-radius: 10px;
+}
+.contenedor{
+	width: 100%;
+	margin:auto;
+}
+header{
+	z-index: 1000;
+}
+
+@media (min-width: 576px){
+.modal-dialog {
+    max-width: 1100px !important;
+}
+}
+@media (min-width: 992px){
+.col-lg-6 {
+  
+    flex: 0 0 25% !important;
+}
+}
+.botoasn {
+    padding: 4px 25px;
+    background: rgb(19, 143, 247);
+    border: 1px solid #1161B0;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration:none;
+}

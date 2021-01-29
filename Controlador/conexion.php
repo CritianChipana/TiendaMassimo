@@ -3,7 +3,7 @@ class conexion
 {
 	protected function conectar()
 	{
-		$a =mysqli_connect('localhost','root','12345678','restaurante');
+		$a =mysqli_connect('localhost','root','admin','restaurante');
 		// mysqli_select_db('sistema');
 		return $a;
 	}

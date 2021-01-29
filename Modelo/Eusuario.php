@@ -1,7 +1,7 @@
 <?php
 // include_once("conexion.php");
 // include_once("../../model/conexion.php");
-include_once("../model/conexion.php");
+	include_once("../Controlador/conexion.php");
 class Eusuario extends conexion
 {
 	public function Eusuario()
@@ -12,9 +12,6 @@ class Eusuario extends conexion
 	{
 		// $password = md5($password);
 		$consulta = "SELECT * FROM usuario WHERE  DNI='$login'  AND '$password' = password AND estado = 1";
-		
-		
-		
 		$resultado = mysqli_query($this->conectar(),$consulta);
 		$this -> desConectar();
 		$aciertos = mysqli_num_rows($resultado);
@@ -24,5 +21,4 @@ class Eusuario extends conexion
 			return(0);
 	}
 }
-
 ?>

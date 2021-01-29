@@ -1,0 +1,93 @@
+:root{
+--blanco: #ffffff;
+--oscuro: #212121;
+--principal: #FFC107;
+--secundario: #0097a7;
+--gris: #757575;
+}
+a{
+	text-decoration: none; /*QUITAR EL SUBRAYADO A <a>*/
+	text-transform: uppercase;
+}
+html{
+	font-size: 62.5%;
+}
+body{
+	font-size: 16px;
+	font-family: 'Krub', sans-serif;
+}
+h1{
+	margin: 0px;
+	justify-content: center;
+}
+label{
+	font-size: 15px !important;
+}
+.imgsalir {height: 3rem;}
+.header1 {
+	background-color: #0c3c60;	
+}
+.nombre {
+	margin: 0 3rem;
+	font-size: 2rem;
+	font-weight: 700; /*HACER MÁS ROBUSTA LA LETRA*/
+}
+.informacion span{
+	padding-top: 1rem;
+}
+.color-logo {
+	color: #7DCADA; /*COLOR PARA LETRA TELECOMUNICACIONES*/
+}
+.global-fixed {
+	text-transform: uppercase;
+}
+.headerdiv {
+	padding: 1rem;
+	display: flex; 
+	max-width: 180rem;
+	flex-direction: column;
+	align-items: center;
+}
+@media (min-width: 700px) {
+	.headerdiv {
+	flex-direction: row;
+	justify-content: space-between;
+	}
+}
+span{
+	color:  var(--blanco); /*COLOR BLANCO PARA LETRA ARAPA*/
+	
+}
+.contenedor {
+	max-width: 180rem;
+	margin: 0 auto;
+}
+.nav-bg {
+	/*Color de fondo del div que contiene nuestro nav , este div tiene la clase nav-vg*/
+	background-color: var(--secundario);
+	padding: 0.5rem;
+}
+.navegacion-principal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+@media (min-width: 1136px) { /* PARA UNA TABLET, 480PX PARA UN TELEFONO*/
+	.navegacion-principal {
+		flex-direction: row;
+		justify-content: space-around;
+	}
+}
+.navegacion-principal a {
+	color: var(--blanco); /*PONE DE COLOR BLANCO EL TEXTO DEL <a></a>*/
+/*	background-color: var(--principal); */
+	text-decoration: none; /*Quita el subrayado quetiene por defecto los <a></a>*/
+	font-size:1.7rem;
+	font-weight: 700;
+	padding: 1rem;
+}
+.navegacion-principal a:hover {
+	background-color: var(--principal);
+	color: var(--oscuro);
+}
+

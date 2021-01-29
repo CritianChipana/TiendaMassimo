@@ -12,7 +12,7 @@ class formAutenticarUsuario
 		</head>
 		
 		<body>
-		<form name="form1" action="segurityModule/getUsuario.php" method="POST" >
+		<form name="form1" action="Controlador/getUsuario.php" method="POST" >
 		  <table width="268" border="0" align="center">
             <tr>
               <td colspan="3" align="center">Autenticacion</td>

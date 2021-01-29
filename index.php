@@ -1,6 +1,6 @@
 <?php
 //index.php
-include_once("segurityModule/formAutenticarUsuario.php");
+include_once("Vista/formAutenticarUsuario.php");
 $objAcceso = new formAutenticarUsuario;
 $objAcceso -> formAutenticarUsuarioShow();
 ?>
