@@ -2,7 +2,8 @@
 	class formGenerarComprobante
 	{
 		public function formGenerarComprobanteShow($listaPrivilegios)
-		{ ?>
+		{ 
+			?>
 		<!DOCTYPE html>
 		<html>
 		<head>
@@ -13,11 +14,19 @@
 			include_once("../shared/nav.php");
 			$objNav= new nav();
 			$objNav->navShow($listaPrivilegios);
+			$dni=$listaPrivilegios[0]['DNI'];
 		  ?>
 		<body>
+		<div style="text-align: center">
+		<p>Escoja de donde desea generar el comprobante de pago</p>
+	    <form  action="controlVerificarAccesoComprobante.php" method="POST">
+	          	<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
+	          	<input type="hidden" name="idbtn" value="1">
+	          	<input type="submit" name="btnc" value="Comandas">
+	          	<input type="submit" name="btnp" value="Proformas">
+	    </form>		
+		</div>
 
-			<a class="botoasn" href="controlVerificarAcceso.php?opc=1" >Comandas</a>
-			<a class="botoasn" href="controlVerificarAcceso.php?opp=2" >Proformas</a>
 		</body>
 		</html>
 		<?php

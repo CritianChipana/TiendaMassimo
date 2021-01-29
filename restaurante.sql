@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-01-2021 a las 05:07:59
+-- Tiempo de generación: 29-01-2021 a las 06:19:28
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -45,19 +45,21 @@ CREATE TABLE `comanda` (
   `DNI` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `estado` varchar(20) DEFAULT NULL,
-  `dniCliente` char(18) DEFAULT NULL
+  `dniCliente` char(18) DEFAULT NULL,
+  `empleado` varchar(30) NOT NULL,
+  `importe` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `comanda`
 --
 
-INSERT INTO `comanda` (`idcomanda`, `DNI`, `fecha`, `estado`, `dniCliente`) VALUES
-(1, 1234567, '0000-00-00', '1', '74306285'),
-(2, 1234567, '0000-00-00', '1', '74306285'),
-(3, 1234567, '2021-01-05', '1', '74306285'),
-(4, 1234567, '2021-01-20', '1', '74306285'),
-(5, 1234567, '2021-01-20', '1', '74306285');
+INSERT INTO `comanda` (`idcomanda`, `DNI`, `fecha`, `estado`, `dniCliente`, `empleado`, `importe`) VALUES
+(1, 1234567, '0000-00-00', '1', '74306285', '', 0),
+(2, 1234567, '0000-00-00', '1', '74306285', '', 0),
+(3, 1234567, '2021-01-05', '1', '74306285', '', 0),
+(4, 1234567, '2021-01-20', '1', '74306285', '', 0),
+(5, 1234567, '2021-01-20', '1', '74306285', '', 0);
 
 -- --------------------------------------------------------
 
@@ -87,7 +89,7 @@ CREATE TABLE `detalleproforma` (
 CREATE TABLE `detalle_comanda` (
   `iddetalle_comanda` int(11) NOT NULL,
   `cantidad` char(18) DEFAULT NULL,
-  `importe` int(11) DEFAULT NULL,
+  `precio` int(11) DEFAULT NULL,
   `idProducto` int(11) DEFAULT NULL,
   `idcomanda` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -96,7 +98,7 @@ CREATE TABLE `detalle_comanda` (
 -- Volcado de datos para la tabla `detalle_comanda`
 --
 
-INSERT INTO `detalle_comanda` (`iddetalle_comanda`, `cantidad`, `importe`, `idProducto`, `idcomanda`) VALUES
+INSERT INTO `detalle_comanda` (`iddetalle_comanda`, `cantidad`, `precio`, `idProducto`, `idcomanda`) VALUES
 (1, '2', NULL, 1, 1),
 (2, '1', NULL, 2, 1),
 (3, '2', NULL, 2, 2),
@@ -128,7 +130,7 @@ CREATE TABLE `factura` (
 
 CREATE TABLE `privilegios` (
   `idprivilegio` int(11) NOT NULL,
-  `nombrep` varchar(50) DEFAULT NULL,
+  `nombre` varchar(20) DEFAULT NULL,
   `link` varchar(100) DEFAULT NULL,
   `foto` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -137,12 +139,11 @@ CREATE TABLE `privilegios` (
 -- Volcado de datos para la tabla `privilegios`
 --
 
-INSERT INTO `privilegios` (`idprivilegio`, `nombrep`, `link`, `foto`) VALUES
+INSERT INTO `privilegios` (`idprivilegio`, `nombre`, `link`, `foto`) VALUES
 (1, 'emitir devolucion', 'cajero', 'np.jpg'),
 (2, 'emitir proforma', 'modelo', 'a.png'),
 (3, 'emitir boleta', 'modelo', 'as.png'),
-(4, 'generar Comanda', '../Controlador/controlVerificarAccesoComprobanteD.php', 'as.jpg'),
-(5, 'gestionar comprobante', '../Controlador/controlVerificarAccesoComprobante.php', NULL);
+(4, 'generar Comanda', '../gestionModulo/emitir Comanda/controlVerificarAcceso.php', 'as.jpg');
 
 -- --------------------------------------------------------
 
@@ -195,7 +196,7 @@ CREATE TABLE `usuario` (
   `estado` varchar(20) DEFAULT NULL,
   `celular` varchar(20) DEFAULT NULL,
   `direccion` varchar(20) DEFAULT NULL,
-  `correo` varchar(50) DEFAULT NULL
+  `correo` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -203,7 +204,6 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`DNI`, `password`, `nombre`, `apellidos`, `estado`, `celular`, `direccion`, `correo`) VALUES
-(123, '123', 'Luis Gabriel', 'Coaquira Calloapaza', '1', '990039887', 'Mz P, Lt 10, St,20', 'kidmeg100@hotmail.com'),
 (1234, '1234', 'camilo', 'Chipana', '1', '986661493', 'Bolivar', 'tucariñoso@gmail.com'),
 (1234567, '1234567', 'cristian', 'Chipana', '1', '986661493', 'km 40', 'tucariñoso@gmail.com');
 
@@ -229,8 +229,7 @@ INSERT INTO `usuarioprivilegio` (`idDetatallePrivilegio`, `DNI`, `idprivilegio`)
 (3, 1234567, 3),
 (4, 1234, 1),
 (5, 1234, 2),
-(6, 1234567, 4),
-(7, 123, 5);
+(6, 1234567, 4);
 
 --
 -- Índices para tablas volcadas
@@ -342,7 +341,7 @@ ALTER TABLE `factura`
 -- AUTO_INCREMENT de la tabla `privilegios`
 --
 ALTER TABLE `privilegios`
-  MODIFY `idprivilegio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idprivilegio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -366,7 +365,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuarioprivilegio`
 --
 ALTER TABLE `usuarioprivilegio`
-  MODIFY `idDetatallePrivilegio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idDetatallePrivilegio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas

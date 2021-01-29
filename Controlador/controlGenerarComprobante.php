@@ -1,9 +1,9 @@
 <?php 
-		include_once("../../model/modelGenerarComprobante/EntidadComanda.php");
-		include_once("../../model/modelGenerarComprobante/EntidadProforma.php");
+		include_once("../Modelo/EntidadComanda.php");
+		include_once("../Modelo/EntidadProforma.php");
 	class controlGenerarComprobante{
 
-		public function listarComanda(){
+		public function listarComanda(){ 
             $objComanda = new EntidadComanda();
             $respuesta = $objComanda->listarComanda();
             $data = $respuesta->fetch_all(MYSQLI_ASSOC);

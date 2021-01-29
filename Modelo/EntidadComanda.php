@@ -1,17 +1,15 @@
 <?php 
-include_once('../conexion.php');
+include_once('../Controlador/conexion.php');
+
 class EntidadComanda extends conexion{
     
   	public function listarComanda()
-  	{
-        $consulta="SELECT * FROM comanda WHERE idestadocomprobante=1";
+  	{ 
+  		$a =mysqli_connect('localhost','root','admin','restaurante');
+        $consulta="SELECT * FROM comanda ";
         $resultado = mysqli_query($this->conectar(),$consulta);
         $this->desconectar();
         return $resultado;
-
-  	}
-
-        
-}
-
+ 	} 
+ }
  ?>

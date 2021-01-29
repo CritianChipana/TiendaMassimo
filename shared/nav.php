@@ -29,8 +29,15 @@
 	          <?php
 	          $numero = count($listaPrivilegios);
 	          for($i = 0; $i < $numero; $i++){
+	    //      echo $listaPrivilegios[$i]['link']	
 	          ?>
-	          <a class="principal" href="<?php echo $listaPrivilegios[$i]['link']."?idbtn=".$listaPrivilegios[$i]['idprivilegio']."&dni=".$listaPrivilegios[$i]['DNI']; ?>"><?php echo $listaPrivilegios[$i]['nombrep']; ?></a>
+	          <form  action=" <?php echo $listaPrivilegios[$i]['link']; ?> " method="POST">
+	          	<input type="hidden" name="idbtn" value="1">
+	          	<input type="hidden" name="fom1" value="1">
+	          	<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
+	          	<input type="submit" name="nombrep" value="<?php echo $listaPrivilegios[$i]['nombrep']; ?>">
+	          </form>
+<!--     <a class="principal" href="<?php //echo $listaPrivilegios[$i]['link']."?idbtn=".$listaPrivilegios[$i]['idprivilegio']."&dni=".$listaPrivilegios[$i]['DNI']; ?>"><?php //echo $listaPrivilegios[$i]['nombrep']; ?></a> -->
 	          <?php
 	          }
 	          ?>
