@@ -21,35 +21,7 @@ class formBienvenida
 
 		 <?php //var_dump($listaPrivilegios);
 		 		echo "Bienvenido: "." ".$listaPrivilegios[0]['nombre']." ".$listaPrivilegios[0]['apellidos'];
-		  ?>
-		 
-
-
-
-
-
-		 <?php
-			$numero = count($listaPrivilegios);
-			for($i = 0; $i < $numero; $i++)
-			{
-				?>
-				<form action="<?php echo $listaPrivilegios[$i]['link']?>" method="post">
-					<p><?php echo $listaPrivilegios[$i]['nombre']; ?></p>
-					<p><?php echo $listaPrivilegios[$i]['apellidos']; ?></p>
-					<p><?php echo $listaPrivilegios[$i]['estado']; ?></p>
-					<input type="text" name="dni" value="<?php echo $listaPrivilegios[$i]['DNI']; ?>" id="" hidden>
-					<input type="text" name="apellido" value="<?php echo $listaPrivilegios[$i]['apellidos']; ?>" id="" hidden>
-					<input name="<?php echo $listaPrivilegios[$i]['idprivilegio'] ?>" type="submit" value="<?php echo $listaPrivilegios[$i]['nombre']?>" />
-					<input name="p-<?php echo $listaPrivilegios[$i]['idprivilegio'] ?>" type="hidden" value="<?php echo $listaPrivilegios[$i]['nombre']?>" />
-				</form>
-				<br />
-				<?php
-			}
-		?>
-
-
-
-		
+		  ?> 
 		</body>
 		</html>
 	<?php	
