@@ -33,28 +33,29 @@ class usuarioPrivilegios extends conexion
     {
         $privilegios = "";
         $j = 0;
-        for ($j = 0; $j < count($privilegiosAsignados) - 1; $j++) {
-            $privilegios .= "(" . $dni . ", " . $privilegiosAsignados[$j]['idprivilegio'] . "),";
-        }
-
-        $privilegios .= "(" . $dni . ", " . $privilegiosAsignados[$j]['idprivilegio'] . ")";
-
-        $consulta = "    INSERT INTO usuarioprivilegio(DNI, idprivilegio)
+        for ($j = 0; $j < count($privilegiosAsignados); $j++) {
+            $privilegios = "(" . $dni . ", " . $privilegiosAsignados[$j]['idprivilegio'] . ");";
+       
+            $consulta = "    INSERT INTO usuarioprivilegio(DNI, idprivilegio)
                     VALUES" . $privilegios;
+        
  
-        //echo $consulta;  
+        
         $this->conectar();
         $resultado = mysqli_query($this->conectar(),$consulta); 
-        $this -> desconectar();
-        return $resultado;
+        $this -> desconectar();    
+    } 
+
+        
+        return TRUE;
     }
 
     public function eliminarPrivilegiosUsuario($dni)
     {
 
-        $consulta = "    DELETE FROM usuarioprivilegios" .
+        $consulta = "    DELETE FROM usuarioprivilegio" .
             "   WHERE usuarioprivilegio.DNI = $dni";
-
+            echo $consulta;  
         $this->conectar();
         $resultado = mysqli_query($this->conectar(),$consulta); 
         $this->desconectar ();

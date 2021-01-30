@@ -121,7 +121,7 @@ class formAgregarUsuario
                                                     }
                                                 }
                                             }
-                                            $privilegios .= "<label style='font-size:15px;' class='form-check-label lead'><input class='form-check-input' type='checkbox' {$estado} name='{$privilegioSistema['idprivilegio']}'>&nbsp;&nbsp;{$privilegioSistema['nombre']}</label><br>";
+                                            $privilegios .= "<label style='font-size:15px;' class='form-check-label lead'><input class='form-check-input' type='checkbox' {$estado} name='{$privilegioSistema['idprivilegio']}'>&nbsp;&nbsp;{$privilegioSistema['nombrep']}</label><br>";
                                             $estado = "";
                                         }
 
