@@ -1,0 +1,78 @@
+<?php 
+	include_once('../Controlador/conexion.php');
+	class EntidadFactura extends conexion{
+
+		public function listarFactura(){
+			$consulta="SELECT * FROM factura";
+			$resultado = mysqli_query($this->conectar(),$consulta);
+			$this->desConectar();
+			return $resultado;
+		}
+		public function agregarFacturaC($idcomanda,$ruc){
+
+            
+			$consulta = "SELECT * FROM detalleComanda DC, producto PR, Comanda C  WHERE DC.idcomanda = '$idcomanda' AND DC.idproducto=PR.idproducto AND DC.idcomanda=C.idcomanda";
+            $resultado = mysqli_query($this->conectar(),$consulta);
+            $num_registros = mysqli_num_rows($resultado);
+            for($i = 0; $i < $num_registros; $i++){
+                $fila[$i] = mysqli_fetch_array($resultado);
+            }
+            $empleado=$fila[0]['empleado'];
+            $fecha=$fila[0]['fecha'];
+            $total=$fila[0]['total'];
+            $idestadocomprobante=$fila[0]['idestadocomprobante'];
+            $insertfactura="INSERT INTO factura (empleado,ruc,fecha,total,idestadocomprobante) VALUES ( '$empleado','$ruc','$fecha','$total','$idestadocomprobante')";
+            $resultado = mysqli_query($this->conectar(),$insertfactura);
+
+            $insertdetallefactura="INSERT INTO detallefactura (idfactura,idproducto,cantidad,precio) VALUES ";
+                foreach ($fila as $res){
+                    $idcomanda=$res['idcomanda'];
+                    $idproducto=$res['idproducto'];
+                    $cantidad=$res['cantidad'];
+                    $precio=$res['precio'];
+                     $insertdetallefactura=$insertdetallefactura."('$idcomanda','$idproducto','$cantidad','$precio'),";
+                }
+            $insertdetallefactura=substr($insertdetallefactura, 0, -1);
+            $resultado = mysqli_query($this->conectar(),$insertdetallefactura);
+
+           $updateestado="UPDATE comanda SET idestadocomprobante=0 WHERE idcomanda='$idcomanda'";
+           $resultado = mysqli_query($this->conectar(),$updateestado); 
+           $this->desconectar(); 
+		}
+		public function agregarFacturaP($idproforma){
+
+            $conexion = new Conexion();
+            $idproforma=1;
+			$consulta = "SELECT * FROM detalleProforma DC, producto PR, proforma P, usuario U WHERE DC.idproforma = '$idproforma' AND DC.idproducto=PR.idproducto AND DC.idproforma=P.idproforma AND P.DNI=U.DNI";
+            $resultado = mysqli_query($this->conectar(),$consulta);
+            $num_registros = mysqli_num_rows($resultado);
+            for($i = 0; $i < $num_registros; $i++){
+                $fila[$i] = mysqli_fetch_array($resultado);
+            }
+            $empleado=$fila[0]['nombre'];
+            $ruc=$fila[0]['ruc'];
+            $fecha=$fila[0]['fecha'];
+            $fechaentrega=$fila[0]['fechaentrega'];
+            $idcliente=$fila[0]['idcliente'];
+            $total=$fila[0]['total'];
+            $idestadocomprobante=$fila[0]['idestadocomprobante'];
+            $insertfactura="INSERT INTO factura(empleado,ruc,fecha,fechaentrega,idcliente,total,idestadocomprobante) VALUES ('$empleado','$ruc','$fecha','$fechaentrega','$idcliente','$total','$idestadocomprobante')";
+            $resultado = mysqli_query($this->conectar(),$insertfactura);
+
+            $insertdetallefactura="INSERT INTO detallefactura (idfactura,idproducto,cantidad,precio) VALUES ";
+                foreach ($fila as $res) {
+                    $idproforma=$res['idproforma'];
+                    $idproducto=$res['idproducto'];
+                    $cantidad=$res['cantidad'];
+                    $precio=$res['precio'];
+                    $insertdetallefactura=$insertdetallefactura."('$idproforma','$idproducto','$cantidad','$precio'),";
+                }
+            $insertdetallefactura=substr($insertdetallefactura, 0, -1);
+            $resultado = mysqli_query($this->conectar(),$insertdetallefactura);
+
+            $updateestado="UPDATE proforma SET idestadocomprobante=0 WHERE idproforma='$idproforma'";
+            $resultado = mysqli_query($this->conectar(),$updateestado); 
+            $this->desconectar();
+		}
+	}
+ ?>

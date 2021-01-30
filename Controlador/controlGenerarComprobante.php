@@ -3,33 +3,31 @@
 		include_once("../Modelo/EntidadProforma.php");
 	class controlGenerarComprobante{
 
-		public function listarComanda(){ 
+		public function listarComanda()
+		{ 
             $objComanda = new EntidadComanda();
             $respuesta = $objComanda->listarComanda();
             $data = $respuesta->fetch_all(MYSQLI_ASSOC);
             return $data;
 		}
-
 		public function detalleComandaID($idcomanda)
 		{
-		$objComanda=new Comanda();
-		$fila=$objComanda->detalleComandaID($idcomanda);
-		return $fila;
+			$objDComanda=new EntidadComanda();
+			$fila=$objDComanda->detalleComandaID($idcomanda);
+			return $fila;
 		}
-
 		public function listarProforma()
 		{
-            $objComanda = new Proforma();
-            $respuesta = $objComanda->listarProforma();
+            $objProforma = new EntidadProforma();
+            $respuesta = $objProforma->listarProforma();
             $data = $respuesta->fetch_all(MYSQLI_ASSOC);
             return $data;
 		}
-		
 		public function detalleProformaID($idproforma)
 		{
-		$objComanda=new Proforma();
-		$fila=$objComanda->detalleProformaID($idproforma);
-		return $fila;
+			$objDProforma=new EntidadProforma();
+			$fila=$objDProforma->detalleProformaID($idproforma);
+			return $fila;
 		}
 	}
  ?>
