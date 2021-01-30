@@ -1,7 +1,8 @@
 <?php
 
 // include_once("../model/conexion.php");
-include_once("../../model/conexion.php");
+// include_once("../../model/conexion.php");
+include_once("../Controlador/conexion.php");
 
 class EntidadProducto extends conexion{
 

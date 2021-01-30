@@ -1,21 +1,45 @@
 <?php
 
 class formGenerarComanda{
-    
-    var $dni;
-    var $apellido;
+   
 
-    function __construct($dni,$apellido){
-        $this->dni=$dni;
-        $this->apellido=$apellido;
+    function __construct(){
+  
     }
 
-
-    function formGenerarComandaShow($lista){
+    public function formGenerarComandaShow($listaprivilegios,$listaproductos){
         ?>
-        <P>Mesero: <?php echo "$this->apellido" ?></P>
-        <P>Usuario: <?php echo "$this->dni" ?></P>
-        
+        <!DOCTYPE html>
+		<html>
+		<head>
+			<title>Generar Comanda</title>
+		</head>
+		<link rel="stylesheet" type="text/css" href="../public/css/main.css">
+		<?php
+			include_once("../shared/nav.php");
+			$objNav= new nav();
+            $objNav->navShow($listaprivilegios);
+            $nombre ="";
+            $apellido ="";
+            $dni ="";
+            $empleado = "";
+		  ?>
+		<body>
+
+			<!-- <a class="botoasn" href="controlVerificarAcceso.php?opc=1" >Comandas</a>
+			<a class="botoasn" href="controlVerificarAcceso.php?opp=2" >Proformas</a> -->
+        <?php for($i = 0; $i <1; $i++){
+                
+            ?>
+              <P>Mesero: <?php echo $listaprivilegios[$i]['nombre']." ". $listaprivilegios[$i]['apellidos']?></P>
+               <P>Usuario: <?php echo $listaprivilegios[$i]['DNI'] ?></P>
+            <?php
+                $dni = $listaprivilegios[$i]['DNI'];
+                $empleado = $listaprivilegios[$i]['nombre']." ".$listaprivilegios[$i]['apellidos'];
+        } ?>
+        <hr>
+        <form action="controlGenerarComanda.php" method="post">
+
             <table>
                 <tr>
                     <th>Platillo</th>
@@ -23,38 +47,48 @@ class formGenerarComanda{
                     <th>cantidad</th>
                     <th>Grabar</th>
                 </tr>
-<hr>
         <?php
-            foreach($lista as $row){
+        $cont=0;
+            foreach($listaproductos as $row){
                 ?>
-                <form action="controlGenerarComanda.php" method="post">
                 <tr>
-                    <td><?php echo $row['nombre'] ?></td>
+                    <td><?php echo $row['nombrepr'] ?></td>
                     <td><?php echo $row['precio'] ?></td>
-                    <td><input type="number" name="cantidad" id=""></td>
-                    <!-- <td><input name="a" type="submit" value="Grabar" id="<?php echo $row['idProducto'] ?>"></td> -->
-                    <td><input type="checkbox" value="" name="" id=""></td>
+                    <td><input type="number" name="<?php echo $row['idProducto'];?>" id=""></td>
+                    <td><input type="text" value="<?php echo $row['idProducto'] ?>" name="<?php echo $row['idProducto'];?>i" id="" hidden></td>
+                    <td><input type="checkbox" value="<?php echo $row['precio'];?>" name="<?php echo $row['idProducto'];?>c" id=""></td>
                     
                 </tr>
-                </form>
                 <?php
+                $cont++;
             }
-        ?>
+            ?>
             </table>
+            <br><hr><br>
+            <input type="text" name="tamano" value="<?php echo $cont ?>" id="" hidden>
+            <input type="text"  value="<?php echo $dni?>" name="dni"  hidden >
+            <input type="text"  value="<?php echo $empleado?>" name="empleado"  hidden >
+            <input type="text"  value="<?php echo $this->apellido ?>" name="apellido"  hidden >
 
-
-<hr>
-        <form action="" method="post">
-            <label for="plato">Buscar Platillo:
-                <input type="text" name="plato" id="">
+            <label for="">DNI Cliente:<br>
+                <input type="number" name="dnicliente" id=""><br>
             </label>
-            <input type="submit" value="Buscar">
+            <label for="">Fecha:<br>
+                <input type="datetime" name="fecha" id=""><br>
+            </label>
+            <input name="a" type="submit" value="generar">
         </form>
-        
+
+
+        <hr>
+        <script src="../../js/capturarid.js"></script>
+
+
+        </body>
+        </html>
         <?php
     }
 
 }
 
 ?>
-<script src="../../js/capturarid.js"></script>

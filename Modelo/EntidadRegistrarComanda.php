@@ -1,0 +1,59 @@
+<?php
+
+include_once("../Controlador/conexion.php");
+class EntidadRegistrarComanda extends conexion{
+    // INSERT INTO `comanda`(`empleado`, `DNI`, `fecha`, `estadocomprobante`, `dniCliente`, `importe`)
+    //  VALUES ("Samantha","1234567","2020-10-10","1","7777777","150")
+    public function RegistrarComanda($dni,$fecha,$estado,$dnicliente,$empleado,$importe){
+        $sql = "INSERT INTO 
+                comanda(empleado, DNI, fecha, estadocomprobante, dniCliente, importe)
+                VALUES('$empleado','$dni','$fecha','$estado','$dnicliente','$importe')";
+        // echo $sql;
+        $resultado = mysqli_query($this->conectar(),$sql) or die ("Error Resgistrando Comanda");
+        $this->desConectar();
+        if($resultado){
+            return 1;
+        }else{
+            return 0;
+        }
+
+    }
+
+    public function BuscarComanda($dnicliente,$fecha){
+        $sql = "SELECT idcomanda FROM comanda WHERE dniCliente = '$dnicliente' and fecha = '$fecha' ";
+        $resultado = mysqli_query($this->conectar(),$sql);
+        $this->desConectar();
+        $dato = mysqli_fetch_assoc($resultado);
+        // $aciertos = mysqli_num_rows($resultado);
+        if($resultado){
+            return $dato['idcomanda'];
+        }else{
+            return "No sencontro Cliente";
+        }
+        // for($i=0;$i<$aciertos;$i++){
+        //     $fila[$i] = mysqli_fetch_array($resultado);
+        // }
+        // return $fila;
+    }
+
+}
+
+// $consulta = "SELECT * FROM usuario U, privilegios P, usuarioprivilegio DU WHERE U.DNI = '$login' AND U.DNI = DU.DNI AND P.idprivilegio = DU.idprivilegio";
+// 			$resultado = mysqli_query($this->conectar(),$consulta);
+// 			$aciertos = mysqli_num_rows($resultado);
+// 			for($i = 0; $i < $aciertos; $i++)
+// 				$filaEncontrada[$i] = mysqli_fetch_array($resultado);
+// 			return($filaEncontrada);
+// 			$this -> desConectar();
+
+?>
+
+ <!-- insertar comanda
+
+ INSERT INTO `comanda`(`DNI`, `fecha`, `estado`, `dniCliente`, `empleado`, `importe`)
+  VALUES ("1234567","2020-01-01","1","74309273","carlos Moreno","120") -->
+
+<!-- insertar detalles comanda -->
+
+<!-- INSERT INTO `detalle_comanda`( `cantidad`, `precio`, `idProducto`, `idcomanda`)
+ VALUES ("2","35","2","6") -->
