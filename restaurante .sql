@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-01-2021 a las 19:14:51
+-- Tiempo de generación: 30-01-2021 a las 03:48:05
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -64,29 +64,10 @@ INSERT INTO `comanda` (`idcomanda`, `empleado`, `DNI`, `fecha`, `estadocomproban
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalleproforma`
+-- Estructura de tabla para la tabla `detallecomanda`
 --
 
-CREATE TABLE `detalleproforma` (
-  `idDetalleProforma` int(11) NOT NULL,
-  `idProducto` int(11) DEFAULT NULL,
-  `cantidad` int(11) DEFAULT NULL,
-  `precioUnidad` int(11) DEFAULT NULL,
-  `idproforma` int(11) DEFAULT NULL,
-  `nombre` varchar(20) DEFAULT NULL,
-  `apellidos` varchar(20) DEFAULT NULL,
-  `dni` varchar(20) DEFAULT NULL,
-  `celular` varchar(20) DEFAULT NULL,
-  `direccion` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `detalle_comanda`
---
-
-CREATE TABLE `detalle_comanda` (
+CREATE TABLE `detallecomanda` (
   `iddetalle_comanda` int(11) NOT NULL,
   `idcomanda` int(11) DEFAULT NULL,
   `idProducto` int(11) DEFAULT NULL,
@@ -95,10 +76,10 @@ CREATE TABLE `detalle_comanda` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `detalle_comanda`
+-- Volcado de datos para la tabla `detallecomanda`
 --
 
-INSERT INTO `detalle_comanda` (`iddetalle_comanda`, `idcomanda`, `idProducto`, `cantidad`, `precio`) VALUES
+INSERT INTO `detallecomanda` (`iddetalle_comanda`, `idcomanda`, `idProducto`, `cantidad`, `precio`) VALUES
 (1, 1, 1, '2', 70),
 (2, 1, 2, '1', 51),
 (3, 2, 2, '2', 102),
@@ -106,6 +87,30 @@ INSERT INTO `detalle_comanda` (`iddetalle_comanda`, `idcomanda`, `idProducto`, `
 (5, 3, 2, '1', 51),
 (6, 4, 3, '1', 40),
 (7, 5, 2, '1', 51);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `detalleproforma`
+--
+
+CREATE TABLE `detalleproforma` (
+  `idDetalleProforma` int(11) NOT NULL,
+  `idproforma` int(11) DEFAULT NULL,
+  `idProducto` int(11) DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `precio` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `detalleproforma`
+--
+
+INSERT INTO `detalleproforma` (`idDetalleProforma`, `idproforma`, `idProducto`, `cantidad`, `precio`) VALUES
+(1, 1, 1, 1, '35'),
+(2, 1, 2, 1, '51'),
+(3, 2, 3, 1, '40'),
+(4, 2, 2, 2, '102');
 
 -- --------------------------------------------------------
 
@@ -153,7 +158,7 @@ INSERT INTO `privilegios` (`idprivilegio`, `nombrep`, `link`, `foto`) VALUES
 
 CREATE TABLE `producto` (
   `idProducto` int(11) NOT NULL,
-  `nombre` varchar(20) DEFAULT NULL,
+  `nombrepr` varchar(20) DEFAULT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
   `precio` int(11) DEFAULT NULL,
   `foto` varchar(20) DEFAULT NULL
@@ -163,7 +168,7 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`idProducto`, `nombre`, `descripcion`, `precio`, `foto`) VALUES
+INSERT INTO `producto` (`idProducto`, `nombrepr`, `descripcion`, `precio`, `foto`) VALUES
 (1, 'Lomo Saltado', 'Plato favorito del Ingeniero Cristian', 35, 'lomosaltado.png'),
 (2, 'ceviche', 'El pescado es de hace una semana pero hoy recién lo descongelamos', 51, '3.jpg'),
 (3, 'Carapulcra', 'Plato representativo del Ingeniero Cristian', 40, 'elmejor.pnj');
@@ -177,10 +182,21 @@ INSERT INTO `producto` (`idProducto`, `nombre`, `descripcion`, `precio`, `foto`)
 CREATE TABLE `proforma` (
   `idproforma` int(11) NOT NULL,
   `DNI` int(11) DEFAULT NULL,
-  `importe` int(11) DEFAULT NULL,
-  `estado` varchar(20) DEFAULT NULL,
-  `fechaEntrega` date DEFAULT NULL
+  `idcliente` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `fechaentrega` date DEFAULT NULL,
+  `ruc` int(11) DEFAULT NULL,
+  `total` float NOT NULL,
+  `idestadocomprobante` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `proforma`
+--
+
+INSERT INTO `proforma` (`idproforma`, `DNI`, `idcliente`, `fecha`, `fechaentrega`, `ruc`, `total`, `idestadocomprobante`) VALUES
+(1, 123, 1, '2021-01-29', '2021-01-30', 987654321, 86, 1),
+(2, 123, 1, '2021-01-29', '2021-01-30', 0, 43, 1);
 
 -- --------------------------------------------------------
 
@@ -251,20 +267,20 @@ ALTER TABLE `comanda`
   ADD KEY `R_33` (`DNI`);
 
 --
+-- Indices de la tabla `detallecomanda`
+--
+ALTER TABLE `detallecomanda`
+  ADD PRIMARY KEY (`iddetalle_comanda`),
+  ADD KEY `R_31` (`idProducto`),
+  ADD KEY `R_18` (`idcomanda`);
+
+--
 -- Indices de la tabla `detalleproforma`
 --
 ALTER TABLE `detalleproforma`
   ADD PRIMARY KEY (`idDetalleProforma`),
   ADD KEY `R_22` (`idProducto`),
   ADD KEY `R_50` (`idproforma`);
-
---
--- Indices de la tabla `detalle_comanda`
---
-ALTER TABLE `detalle_comanda`
-  ADD PRIMARY KEY (`iddetalle_comanda`),
-  ADD KEY `R_31` (`idProducto`),
-  ADD KEY `R_18` (`idcomanda`);
 
 --
 -- Indices de la tabla `factura`
@@ -322,16 +338,16 @@ ALTER TABLE `comanda`
   MODIFY `idcomanda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de la tabla `detallecomanda`
+--
+ALTER TABLE `detallecomanda`
+  MODIFY `iddetalle_comanda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT de la tabla `detalleproforma`
 --
 ALTER TABLE `detalleproforma`
-  MODIFY `idDetalleProforma` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `detalle_comanda`
---
-ALTER TABLE `detalle_comanda`
-  MODIFY `iddetalle_comanda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idDetalleProforma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
@@ -355,7 +371,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `proforma`
 --
 ALTER TABLE `proforma`
-  MODIFY `idproforma` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idproforma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -380,18 +396,18 @@ ALTER TABLE `comanda`
   ADD CONSTRAINT `R_33` FOREIGN KEY (`DNI`) REFERENCES `usuario` (`DNI`);
 
 --
+-- Filtros para la tabla `detallecomanda`
+--
+ALTER TABLE `detallecomanda`
+  ADD CONSTRAINT `R_18` FOREIGN KEY (`idcomanda`) REFERENCES `comanda` (`idcomanda`),
+  ADD CONSTRAINT `R_31` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`);
+
+--
 -- Filtros para la tabla `detalleproforma`
 --
 ALTER TABLE `detalleproforma`
   ADD CONSTRAINT `R_22` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`),
   ADD CONSTRAINT `R_50` FOREIGN KEY (`idproforma`) REFERENCES `proforma` (`idproforma`);
-
---
--- Filtros para la tabla `detalle_comanda`
---
-ALTER TABLE `detalle_comanda`
-  ADD CONSTRAINT `R_18` FOREIGN KEY (`idcomanda`) REFERENCES `comanda` (`idcomanda`),
-  ADD CONSTRAINT `R_31` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`);
 
 --
 -- Filtros para la tabla `proforma`
