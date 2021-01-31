@@ -5,7 +5,9 @@ if(isset($_POST)){
         
         $codigo = $_POST['codigo2'];
         $tipo = $_POST['tipo'];
-        include_once('../model/EntidadCancelarPedido.php');
+        $dni1 = $_POST['dni'];
+        // include_once('../Model/EntidadCancelarPedido.php');
+        include_once("../Modelo/EntidadCancelarPedido.php");
         $objetoCancelar = new EntidadCancelarPedido;
         
         $r2=$objetoCancelar -> CancelarPedido($codigo, $tipo);
@@ -15,25 +17,34 @@ if(isset($_POST)){
             alert('No se pudo modificar el Comprobante');
             </script>";
         }else{
-            include_once("formComprobanteDevolucion.php");
-            include_once("../model/EntidadBuscarComprobante.php");
+            // include_once("formComprobanteDevolucion.php");
+            include_once("../Vista/formComprobanteDevolucion.php");
+            // include_once("../model/EntidadBuscarComprobante.php");
+            include_once("../Modelo/EntidadBuscarComprobante.php");
+            include_once("../Modelo/EdetalleUsuario.php");
+            $detalle = new EdetalleUsuario;
+            $listaprivilegios = $detalle->obtenerPrivilegios($dni1);
             $objetobuscarcomprobante = new EntidadBuscarComprobante;
             $objetoComprobante = new formComprobanteDevolucion;
             $r = $objetobuscarcomprobante->validadComprobante($codigo,$tipo);
-            $objetoComprobante -> formComprobanteDevolucionShow($r);
+            $objetoComprobante -> formComprobanteDevolucionShow($r,$listaprivilegios,$tipo);
         }
 
 
     }
 
     if(isset($_POST['no'])){
-        include_once("formBuscarComprobante.php");
-        $objetoBuscar = new formBuscarComprobante;
-        $objetoBuscar -> formBuscarComprobanteShow();
+        $dni =$_POST['dni'];
+        include_once("../Vista/formBuscarComprobante.php");
+        include_once("../Modelo/EdetalleUsuario.php");
+        $objetoEntidad = new EdetalleUsuario;
+        $listaprivilegios =$objetoEntidad -> obtenerPrivilegios($dni);
+        $objetobuscar = new formBuscarComprobante;
+        $objetobuscar -> formBuscarComprobanteShow($listaprivilegios);
     }
 
 }else{
-    include_once("../../shared/formMensajeSistema.php");
+    include_once("../shared/formMensajeSistema.php");
     $objetoMensaje = new formMensajeSistema;
     $objetoMensaje -> formMensajeSistemaShow("Acceso Incorrecto","<a href='../index.php'>Ingresar Usuario</a>");
     

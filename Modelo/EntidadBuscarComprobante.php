@@ -1,17 +1,18 @@
 <?php
 
 
-include_once('../conexion.php');
+include_once('../Controlador/conexion.php');
 class EntidadBuscarComprobante extends conexion{
     
     public function validadComprobante($codigo,$tipo){
-        $consulta = "SELECT * from $tipo WHERE id=$codigo ";
-        $comprobante = mysqli_query($this->conectar(),$consulta);
+        $tipo2 = "id".$tipo;
+        $consulta = "SELECT * from $tipo WHERE $tipo2=$codigo " ;
+        $comprobante = mysqli_query($this->conectar(),$consulta) or die ("Error Resgistrando Comanda") ;
         $this->desconectar();
-
-        $filas = mysqli_num_rows($comprobante);
-        if($filas!=0){
-
+        // return $comprobante;
+        $filas= mysqli_num_rows($comprobante);
+        if($filas){
+            
             for($i=0;$i<$filas;$i++){
                 $arraydatos[$i] = mysqli_fetch_array($comprobante); 
             }
