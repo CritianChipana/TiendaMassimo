@@ -21,9 +21,7 @@ class formBienvenida
 
 		 <?php //var_dump($listaPrivilegios);
 		 		echo "Bienvenido: "." ".$listaPrivilegios[0]['nombre']." ".$listaPrivilegios[0]['apellidos'];
-		  ?>
-		 
-
+		  ?> 
 		</body>
 		</html>
 	<?php	

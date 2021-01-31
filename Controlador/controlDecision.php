@@ -35,7 +35,7 @@ if(isset($_POST)){
 }else{
     include_once("../../shared/formMensajeSistema.php");
     $objetoMensaje = new formMensajeSistema;
-    $objetoMensaje -> formMensajeSistemaShow("Acceso Incorrecto","<a href='../index.php'>Ingresar Usuario</a>");
+    $objetoMensaje -> formMensajeSistemaShow2("Acceso Incorrecto","<a href='../index.php'>Ingresar Usuario</a>");
     
 }
 
