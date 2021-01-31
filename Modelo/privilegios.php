@@ -9,7 +9,7 @@ class Privilegios extends Conexion
     }
  
     
-    public function obtenerPrivilegiosDelSistema()
+    public function  obtenerPrivilegioSistema()
     {
         $consulta = "SELECT * FROM privilegios";
         $this->conectar(); 

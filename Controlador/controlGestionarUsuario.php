@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors', 'On');  
 include_once '../Vista/formGestionarUsuario.php'; 
-include_once '../Vista/formAgregarUsuario.php'; 
+include_once '../Vista/formUsuarioPrivilegios.php'; 
 include_once '../Modelo/privilegios.php';
 include_once '../Modelo/usuarioPrivilegios.php';
 include_once '../Modelo/Eusuario.php';
@@ -31,17 +31,17 @@ class controlGestionarUsuario
         );
 
         $privilegios = new privilegios();
-        $privilegiosD = $privilegios -> obtenerPrivilegiosDelSistema();
+        $privilegiosD = $privilegios ->  obtenerPrivilegioSistema();
  
 
-        $formNuevoUsuario = new formAgregarUsuario();
-        $formNuevoUsuario -> formAgregarUsuarioShow($nuevoUsuario, NULL, $privilegiosD, NULL);
+        $formNuevoUsuario = new formUsuarioPrivilegios();
+        $formNuevoUsuario -> formUsuarioPrivilegiosShow($nuevoUsuario, NULL, $privilegiosD, NULL);
     }
 
     public function guardarUsuario($dni, $password, $nombre, $apellidos, $celular, $direccion, $correo, $estado)
     { 
         $privilegiosD = new privilegios();
-        $privilegiosSistema = $privilegiosD -> obtenerPrivilegiosDelSistema();
+        $privilegiosSistema = $privilegiosD ->  obtenerPrivilegioSistema();
         $privilegiosAsignados = ARRAY();
         $i = 0;   
         foreach ($privilegiosSistema as $privilegioAsignados) {
@@ -53,21 +53,21 @@ class controlGestionarUsuario
         echo $idprivilegio;
         }
         //var_dump($privilegiosSistema); 
-        if ( strlen($nombre) < 4 ||  strlen($apellidos) < 4 ||
+        if ( strlen($nombre) < 0 ||  strlen($apellidos) < 0 ||
         strlen($dni) != 8|| strlen($direccion) < 5 ||
         $i == 0 || strlen($password) <4 ) {
         $mensaje = "Correcciones <br>";
-        if (strlen($nombre) < 4 ) { $mensaje .= "Escriba más de tres caracterres.<br>";
+        if (strlen($nombre) < 0 ) { $mensaje .= "El campo nombre esta vacio.<br>";
         }
-        if (strlen($apellidos) < 4) {$mensaje .= "Escriba más de tres caracterres.<br>";
+        if (strlen($apellidos) < 0) {$mensaje .= "El campo apellidos esta vacio <br>";
         }
         if (strlen($dni) != 8 ) {$mensaje .= "Escriba solo 8 caracterres.<br>";
         }
         if (strlen($direccion) < 4 ) {
-            $mensaje .= "Escriba más de cinco caracterres.<br>";
+            $mensaje .= "Escriba más de cinco caracterres en el campo direccion.<br>";
         }
         if ($i == 0) {
-            $mensaje .= "Seleccione como minimo un privilegio<br>";
+            $mensaje .= "Seleccione como minimo un privilegios<br>";
         }
         if (strlen($password) <4) {
             $mensaje .= "Escriba más de tres caracterres.<br>";
@@ -84,8 +84,8 @@ class controlGestionarUsuario
             );
  
 
-            $formNuevoUsuario = new formAgregarUsuario();
-            $formNuevoUsuario -> formAgregarUsuarioShow($nuevoUsuario, $privilegiosAsignados, $privilegiosSistema, $mensaje);
+            $formNuevoUsuario = new formUsuarioPrivilegios();
+            $formNuevoUsuario -> formUsuarioPrivilegiosShow($nuevoUsuario, $privilegiosAsignados, $privilegiosSistema, $mensaje);
         } else {
             
 
@@ -98,12 +98,12 @@ class controlGestionarUsuario
                 
             } else { 
             
-                $resultado = $usuario->registrarUsuario($dni, $password, $nombre, $apellidos, $celular, $direccion, $correo, $estado, $usuario);
+                $resultado = $usuario->registrarUsuario($dni, $password, $nombre, $apellidos, $celular, $direccion, $correo, $estado );
             
             }
 
             if ($resultado == FALSE) {
-                $mensaje = "ERROR, NO SE HA PODIDO GUARDAR AL USUARIO EN LA BD,POR FAVOR VERIFIQUE SI EL DNI EXISTE EN EL SISTEMA O COMUNICARSE CON EL ADMINISTRADOR DE LA BD.";
+                $mensaje = "EL DNI INGRESADO YA EXISTE";
                 $nuevoUsuario = array(
                     'nombre' => $nombre,
                     'apellidos' => $apellidos,
@@ -116,8 +116,8 @@ class controlGestionarUsuario
                     
                 ); 
                 
-                $formNuevoUsuario = new formAgregarUsuario();
-                $formNuevoUsuario -> formAgregarUsuarioShow($nuevoUsuario, $privilegiosAsignados, $privilegiosSistema, $mensaje);
+                $formNuevoUsuario = new formUsuarioPrivilegios();
+                $formNuevoUsuario -> formUsuarioPrivilegiosShow($nuevoUsuario, $privilegiosAsignados, $privilegiosSistema, $mensaje);
             } else {
                 $mensaje = "SE HA GUARDADO LOS DATOS DEL EMPLEADO EN LA BASE DE DATOS.";
                 $usuarioPrivilegiosD = new usuarioPrivilegios();
@@ -129,7 +129,7 @@ class controlGestionarUsuario
                 $usuariosEncontrados = $usuario -> listarUsuarios();
                 
                 $formGestionarUsuario = new formGestionarUsuario();
-                $formGestionarUsuario -> formGestionarUsuarioShow($usuariosEncontrados, NULL);
+                $formGestionarUsuario -> formGestionarUsuarioShow($usuariosEncontrados, $mensaje);
                 
             }
         }
@@ -140,16 +140,16 @@ class controlGestionarUsuario
         
         $usuarioD = new Eusuario(); 
         //echo $dni;
-        $modificarusuario = $usuarioD->buscarUsuarioPorDni($dni);
+        $modificarusuario = $usuarioD->listarUsuarioPorDni($dni);
         $usuarioPrivilegiosD = new usuarioPrivilegios();
         $privilegiosAsignadosUsuario = $usuarioPrivilegiosD -> obtenerPrivilegiosUsuario($dni);
         
         $privilegiosD = new privilegios();
-        $privilegiosSistemaActuales = $privilegiosD->obtenerPrivilegiosDelSistema();
+        $privilegiosSistemaActuales = $privilegiosD-> obtenerPrivilegioSistema();
     
-        $formModoficiarUsuario = new formAgregarUsuario();
+        $formModoficiarUsuario = new formUsuarioPrivilegios();
         
-        $formModoficiarUsuario-> formAgregarUsuarioShow($modificarusuario, $privilegiosAsignadosUsuario, $privilegiosSistemaActuales, NULL);
+        $formModoficiarUsuario-> formUsuarioPrivilegiosShow($modificarusuario, $privilegiosAsignadosUsuario, $privilegiosSistemaActuales, NULL);
     
     }
  

@@ -14,6 +14,7 @@ class formMensajeSistema
 		<body>
 			<p><center><?php  echo strtoupper($mensaje);?></center></p>
 			<p align="center"><?php echo $link;?></p>
+			 
 		</body>
 		</html>
 	

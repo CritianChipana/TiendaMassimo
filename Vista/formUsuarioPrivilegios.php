@@ -1,10 +1,10 @@
 <?php
-class formAgregarUsuario
+class formUsuarioPrivilegios
 {
-    public function formAgregarUsuarioShow ($usuario, $privilegiosAsignados, $privilegiosSistema, $mensaje)
+    public function formUsuarioPrivilegiosShow ($usuario, $privilegiosAsignados, $privilegiosSistema, $mensaje)
     {
         $estadoUsuario = ""; 
-        if (strcmp($usuario['estado'], "A") == 0) {
+        if (strcmp($usuario['estado'], "1") == 0) {
             $estadoUsuario = "checked";
         }
         ?>
@@ -15,14 +15,13 @@ class formAgregarUsuario
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <title>Agregar usuario</title>
+            <title>Detalle usuario</title>
             <link rel="stylesheet" href="../Public/bootstrap.min.css"> 
         </head>
 
         <body>
         <?php
         if ($mensaje != NULL) {
-
             ECHO "<div class= 'alert alert-danger'>{$mensaje}</div>";
         }
         ?>
@@ -59,7 +58,7 @@ class formAgregarUsuario
                                     
                                     <div class="form-group col-md-2">
                                     <label>Estado: </label><br>
-                                    <select class='form-control' name='estado' id='estado' <?php ECHO $estadoUsuario; ?>>
+                                    <select class='form-control' name='estado' id='estado' <?PHP ECHO $estadoUsuario; ?>>
                                         <option value="0">Inactivo</option>
                                         <option value="1">Activo</option> 
                                     </select>        
@@ -70,8 +69,7 @@ class formAgregarUsuario
                                     <div class="form-group col-md-6">
                                         <label >Nombres: </label>
                                         <input class="form-control" type="text" name="nombre" maxlength="50" value="<?PHP echo $usuario['nombre']; ?>">
-                                    </div> 
-                                    <!--div class="form-group md-6"-->
+                                    </div>  
                                     <div class="form-group col-md-6">
                                         <label>Apellidos: </label>
                                         <input class="form-control" type="text" name="apellidos" maxlength="80"
@@ -97,9 +95,7 @@ class formAgregarUsuario
                                         <label>Dirección: </label>
                                         <input class="form-control" type="text" name="direccion" maxlength="120"
                                             value="<?PHP ECHO $usuario['direccion']; ?>">
-                                    </div>
-
-
+                                    </div> 
                                 </div>
                             </div>
                         </div>

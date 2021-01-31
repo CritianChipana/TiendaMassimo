@@ -16,10 +16,11 @@ class formGestionarUsuario
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
         </head>
         <body>
+        <script>setTimeout(()=>{document.getElementById("mensaje").style.cssText="display:none"},2000)</script>
         <?php
         if ($mensaje != NULL) {
 
-            echo "<div class= 'alert alert-danger'>{$mensaje}</div>";
+            echo "<div class= 'alert alert-danger' id='mensaje'>{$mensaje}</div>";
         }
         ?>
         <div class="container"> 
@@ -56,11 +57,12 @@ class formGestionarUsuario
                     $tbody = "";
                     $i = 1;
                     foreach ($usuarios as $usuario) {
-                        $estado = "1";
+                        $estado = "ACTIVO";
                         if (strcmp($usuario['estado'], "0") == 0) {
-                            $estado = "0";
+                            $estado = "INACTIVO";
+                            
                         }
-
+     
                         $tbody .= " <tr>";
                         $tbody .= " <td>{$usuario['DNI']}</td>";
                         $tbody .= " <td>{$usuario['nombre']}</td>";

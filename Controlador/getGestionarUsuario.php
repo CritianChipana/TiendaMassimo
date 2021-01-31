@@ -7,7 +7,9 @@ session_start();
         $controlGestionarUsuario = new controlGestionarUsuario();
         $controlGestionarUsuario -> gestionarUsuario();
     
-	} else if (isset($_POST['nuevoUsuario'])) {
+    }   
+    
+    else if (isset($_POST['nuevoUsuario'])) {
         include_once 'controlGestionarUsuario.php';
         $controlGestionarUsuario = new controlGestionarUsuario();
         $controlGestionarUsuario -> nuevoUsuario();
@@ -22,7 +24,7 @@ session_start();
   
 	} else if (isset($_POST['guardarUsuario'])) {
                
-                $dni = (isset($_POST['DNI'])) ? trim($_POST['DNI']): '';
+        $dni = (isset($_POST['DNI'])) ? trim($_POST['DNI']): '';
         
         $password = trim($_POST['password']);
         $nombre = trim($_POST['nombre']);
@@ -30,18 +32,13 @@ session_start();
         $celular = trim($_POST['celular']);
         $direccion = trim($_POST['direccion']);
         $correo = trim($_POST['correo']);
-        $estado = "0";
+        $estado = trim($_POST['estado']);
         $dniActual = "";
 
         //echo $dni;
         if (isset($_POST['dniActual'])) {
             $dniActual = $_POST['dniActual'];
-        }
-
-        if (isset($_POST['estado'])) {
-            $estado = "1";
-        }
-        
+        } 
         include_once 'controlGestionarUsuario.php';
         $controlGestionarUsuario = new controlGestionarUsuario();
         $controlGestionarUsuario -> guardarUsuario($dni, $password, $nombre, $apellidos, $celular, $direccion, $correo, $estado, $dniActual);
