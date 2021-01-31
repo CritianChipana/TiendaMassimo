@@ -70,13 +70,13 @@
 						<td><?php echo $listadoproformas[$i]['fechaentrega'] ?></td>
 						<td><?php echo $listadoproformas[$i]['ruc'] ?></td>
 						<td><?php echo $listadoproformas[$i]['total'] ?></td>
-						<td><?php echo $listadoproformas[$i]['idestadocomprobante'] ?></td>
+						<td><?php echo $listadoproformas[$i]['estadocomprobante'] ?></td>
 						<form  action="controlVerificarAccesoComprobante.php" method="POST">
 						<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
 						<input type="hidden" name="idbtn" value="1">
 						<input type="hidden" name="idproforma" value=" <?php echo $listadoproformas[$i]['idproforma']; ?> ">
 
-						<?php if ($listadoproformas[$i]['idestadocomprobante']==1): ?>
+						<?php if ($listadoproformas[$i]['estadocomprobante']==1): ?>
 						<?php if (($listadoproformas[$i]['ruc'])>0)
 						{?>
 						<td><input type="submit" name="btnpf" value="Factura"></td>		

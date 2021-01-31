@@ -4,7 +4,7 @@ class EntidadComanda extends conexion{
     
   	public function listarComanda()
   	{ 
-        $consulta="SELECT * FROM comanda WHERE idestadocomprobante=1 ";
+        $consulta="SELECT * FROM comanda WHERE estadocomprobante=1 ";
         $resultado = mysqli_query($this->conectar(),$consulta);
         $this->desconectar();
         return $resultado;
