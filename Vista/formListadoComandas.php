@@ -11,7 +11,6 @@
 				$mensaje="";
 			}else{
 				$mensaje=$listadocomandas;
-				
 			}
 			?>
 		<!DOCTYPE html>
@@ -21,10 +20,10 @@
 		</head>
 		<link rel="stylesheet" type="text/css" href="../public/css/main.css">
 		<div >
-			<?php  // var_dump($listadocomandas); ?>
+			<?php  // var_dump($listaPrivilegios); ?>
 		<p align="center">LISTADO DE COMANDAS</p>
 		<form action="controlVerificarAccesoComprobante.php" method="POST">
-			<p align="center">BUSCAR COMANDA POR ID :<input type="number" min="0" name="idcomanda">
+			<p align="center">BUSCAR COMANDA POR ID :<input type="number" min="0" name="idcomanda" required>
 			<input type="hidden" name="idbtn" value="1">
 			<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
 			<input type="submit" name="btnc" value="Buscar">
@@ -55,7 +54,7 @@
 					if ($listadocomandas[0]['idcomanda']==$listadocomandas[1]['idcomanda']) {
 						$numfilas=1;}
 					else{
-					$numfilas=count($listadocomandas);}	}	
+					$numfilas=count($listadocomandas);}}	
 				else{
 					$numfilas=count($listadocomandas);}				
 			for ($i=0; $i <$numfilas ; $i++) {
