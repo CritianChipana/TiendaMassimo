@@ -12,7 +12,7 @@ class controllerAutenticarUsuario
 		{
 			include_once("../shared/formMensajeSistema.php");
 			$objMensaje = new formMensajeSistema;
-			$objMensaje -> formMensajeSistemaShow("usuario no encontrado o inhabilitado en el sistema...","<a href='../index.php'>Ir al inicio</a>");
+			$objMensaje -> formMensajeSistemaShow2("usuario no encontrado o inhabilitado en el sistema...","<a href='../index.php'>Ir al inicio</a>");
 		}
 		else
 		{

@@ -26,7 +26,7 @@ if(isset( $_POST['botonbuscarcomprobante'])){
     include_once("../../shared/formMensajeSistema.php");
     
     $objetoMensaje = new formMensajeSistema;
-    $objetoMensaje -> formMensajeSistemaShow("ACCESO NO PERMITIDO","<a href='../index.php'>Iniciar Session</a>");
+    $objetoMensaje -> formMensajeSistemaShow2("ACCESO NO PERMITIDO","<a href='../index.php'>Iniciar Session</a>");
 
 }
 

@@ -7,10 +7,38 @@
 			include_once("../shared/nav.php");
 			$nav=new nav();
 			$nav->navShow($listaPrivilegios);
-			var_dump($listadocomandas);
+			if (is_array($listadocomandas)) {
+				$mensaje="";
+			}else{
+				$mensaje=$listadocomandas;
+			}
 			?>
-		<section class="table">
-		<table border="1px">
+		<!DOCTYPE html>
+		<html>
+		<head>
+			<title>ListadoComandas</title>
+		</head>
+		<link rel="stylesheet" type="text/css" href="../public/css/main.css">
+		<div >
+			<?php  // var_dump($listaPrivilegios); ?>
+		<p align="center">LISTADO DE COMANDAS</p>
+		<form action="controlVerificarAccesoComprobante.php" method="POST">
+			<p align="center">BUSCAR COMANDA POR ID :<input type="number" min="0" name="idcomanda" required>
+			<input type="hidden" name="idbtn" value="1">
+			<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
+			<input type="submit" name="btnc" value="Buscar">
+			</p>
+		</form>
+		<form action="controlVerificarAccesoComprobante.php" method="POST">
+			<p align="center">
+				<input type="hidden" name="idbtn" value="1">
+				<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
+				<input type="submit" name="fom1" value="Volver Atras">
+			</p>
+		</form>
+			<p align="center"><?php echo $mensaje ?></p>
+		<?php if (is_array($listadocomandas)): ?>
+		<table border="1px" align="center" style="margin-top: 2rem">
 			<thead>
 				<tr>
 					<th>Nr°</th>
@@ -21,24 +49,41 @@
 					<th colspan="3">ACCION</th>
 				</tr>
 			</thead>
-				<?php
-						foreach ($listadocomandas as $key) {
-						?>
-						<tr>
-						<td><?php echo $key['idcomanda'] ?></td>
-						<td><?php echo $key['empleado'] ?></td>
-						<td><?php echo $key['DNI'] ?></td>
-						<td><?php echo $key['fecha'] ?></td>					
-						<td><?php echo $key['estadocomprobante'] ?></td>
-						<td><a class="botoasn" href="<?php echo 'formDetalleComanda.php?idcomandab='.$key['idcomanda'] ?>">BOLETA</a></td>
-						<td><a class="botoasn" href="<?php echo 'formDetalleComanda.php?idcomandaf='.$key['idcomanda'] ?>">FACTURA</a></td>
-						</tr>
-						<?php
-						}
-				?>
-		</table>			
-		</section>
+			<?php
+				if (isset($listadocomandas[1]['idcomanda'])) {
+					if ($listadocomandas[0]['idcomanda']==$listadocomandas[1]['idcomanda']) {
+						$numfilas=1;}
+					else{
+					$numfilas=count($listadocomandas);}}	
+				else{
+					$numfilas=count($listadocomandas);}				
+			for ($i=0; $i <$numfilas ; $i++) {
 
+			 	?>
+					<tr>
+					<td><?php echo $listadocomandas[$i]['idcomanda'] ?></td>
+					<td><?php echo $listadocomandas[$i]['empleado'] ?></td>
+					<td><?php echo $listadocomandas[$i]['DNI'] ?></td>
+					<td><?php echo $listadocomandas[$i]['fecha'] ?></td>					
+					<td><?php echo $listadocomandas[$i]['idestadocomprobante'] ?></td>
+					<form  action="controlVerificarAccesoComprobante.php" method="POST">
+					<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
+					<input type="hidden" name="idbtn" value="1">
+					<input type="hidden" name="idcomanda" value=" <?php echo $listadocomandas[$i]['idcomanda']; ?> ">
+					<?php if ($listadocomandas[$i]['idestadocomprobante']==1): ?>
+					<td><input type="submit" name="btncb" value="Boleta"></td>
+					<td><input type="submit" name="btncf" value="Factura"></td>							
+					<?php endif ?>
+			
+					</form>
+					</tr>
+
+			 	<?php
+			 } ?>
+		</table>					
+		<?php endif ?>
+			
+		</div>
 			<?php
 		}
 	}

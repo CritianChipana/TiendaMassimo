@@ -1,21 +1,24 @@
-|<?php
-    $idbtn=(isset($_GET['idbtn'])) ? $_GET['idbtn'] : '';
-    if(is_numeric($idbtn)){
-    $DNI = $_POST['dni'];
-    $apellido = $_POST['apellido'];
-    include_once("formGenerarComanda.php");
-    include_once("../../model/modeloGenerarComanda/EntidadProducto.php");
-    
+
+<?php
+    if(isset($_POST['dni'])){
+    $dni = $_POST['dni'];
+ 
+        
+    include_once("../Vista/formGenerarComanda.php");
+    include_once("../Modelo/EntidadProducto.php");
+    include_once("../Modelo/EdetalleUsuario.php");
+    $objetoEntidad = new EdetalleUsuario;
+    $listaprivilegios =$objetoEntidad -> obtenerPrivilegios($dni);
     $objetoEntidad = new EntidadProducto;
-    $objetoComanda = new formGenerarComanda($DNI,$apellido);
-    $lista = $objetoEntidad->listar_producto();
-    $objetoComanda ->formGenerarComandaShow($lista);
-//prueba numero 2
-    // segundo  modificar
+    $objetoComanda = new formGenerarComanda();
+    $listaproductos = $objetoEntidad->listar_producto();
+    $objetoComanda ->formGenerarComandaShow($listaprivilegios,$listaproductos);
+
     }else{
+     
         include_once("../shared/formMensajeSistema.php");
         $objetoMensaje = new formMensajeSistema;
-        $objetoMensaje -> formMensajeSistemaShow("Acceso Incorrecto","<a href='../index.php'>Ingresar Usuario</a>");
+        $objetoMensaje -> formMensajeSistemaShow2("Acceso Incorrecto","<a href='../index.php'>Ingresar Usuario</a>");
         
     }
 
