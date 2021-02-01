@@ -6,7 +6,7 @@ class formMostrarComprobanteDevolucion{
     function mostrarDatosComprobante($arraydatos,$tipo,$listaPrivilegios){
         $dni = "";
         for($i=0;$i<1;$i++){
-            $dni = $listaPrivilegios[$i]['DNI'];
+            $dni = $listaPrivilegios[$i]['dni'];
         }
         ?>
 		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -71,7 +71,7 @@ class formMostrarComprobanteDevolucion{
                         <td> <label for="">Estado:</label><br></td>
                         <td>
                                 <?php
-                                    if($row['idestadocomprobante'] == 1){
+                                    if($row['estadocomprobante'] == 1){
                                     ?>
                                         <label for="estado1">Atendido</label>
                                             <input  type="radio" name="estado" id="estado1">

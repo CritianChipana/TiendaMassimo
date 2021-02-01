@@ -14,6 +14,7 @@ if(isset($_POST['a'])){
     $dnicliente = $_POST['dnicliente'];
     $contadorcliente =0;
     $empleado = $_POST['empleado'];
+    $contadorempleado=0;
     $importe =0;
     $cont=0;
     $cont2=0;
@@ -24,14 +25,17 @@ if(isset($_POST['a'])){
 
     //CAPTURAR 
     for($i=1; $i<=$tamano;$i++){
-        if($_POST[$i]!=''){
-            array_push($cantidades,$_POST[$i]);
-            array_push($idproductos,$_POST[$i."i"]);
-            $cont++;
-            if($_POST[$i]<0){
-                $negativo ++;
-            } 
+        if(isset($_POST[$i])){
+            if($_POST[$i]!=''){
+                array_push($cantidades,$_POST[$i]);
+                array_push($idproductos,$_POST[$i."i"]);
+                $cont++;
+                if($_POST[$i]<0){
+                    $negativo ++;
+                } 
+            }
         }
+
     }
 
    
@@ -40,6 +44,9 @@ if(isset($_POST['a'])){
     }
     if($_POST['dnicliente']!=''){
         $contadorcliente++;
+    }
+    if($_POST['empleado']!=''){
+        $contadorempleado++;
     }
 
         // CAPTURAR TODOS LOS PLATOS SELECCIONADOS POR EL CHECKBOX
@@ -67,12 +74,12 @@ if(isset($_POST['a'])){
         }
     }
 
-    // echo $importe;
-
-    if($negativo!=0 || $cont == 0 || $cont2==0 || $cont!=$cont2 || $contadorcliente==0 || $contadorFecha==0 ){
+    // echo $importe."-";
+    if($negativo!=0 || $cont == 0 || $cont2==0 || $cont!=$cont2|| $contadorcliente==0 || $contadorFecha==0 || $contadorempleado==0){
         echo    "<script>
                     alert('LLENE LOS CAMPOS CORRECTAMENTE');
                 </script>";
+        // echo $negativo."-".$cont."-".$cont2."-".$contadorcliente."-".$contadorFecha;
         include_once("../Vista/formGenerarComanda.php");
         include_once("../Modelo/EntidadProducto.php");
         include_once("../Modelo/EdetalleUsuario.php");

@@ -27,9 +27,9 @@ class formMostrarComanda{
                 
 				?>
 				  <P>Mesero: <?php echo $listaprivilegios[$i]['nombre']." ". $listaprivilegios[$i]['apellidos']?></P>
-				   <P>Usuario: <?php echo $listaprivilegios[$i]['DNI'] ?></P>
+				   <P>Usuario: <?php echo $listaprivilegios[$i]['dni'] ?></P>
 				<?php
-				$dni=$listaprivilegios[$i]['DNI'];
+				$dni=$listaprivilegios[$i]['dni'];
 			} ?>
 		 
 		 <form action="../Controlador/controlCerrarComanda.php" method="post">

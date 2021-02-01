@@ -2,7 +2,10 @@
 class formComprobanteDevolucion{
 
     function formComprobanteDevolucionShow($arraydatos,$listaPrivilegios,$tipo){
-
+        $dni = "";
+        for($i=0;$i<1;$i++){
+            $dni = $listaPrivilegios[$i]['dni'];
+        }
         ?>
 		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<html xmlns="http://www.w3.org/1999/xhtml">
@@ -23,7 +26,7 @@ class formComprobanteDevolucion{
             foreach($arraydatos as $row){
 
             ?><center> <h4>Comprobante Cancelada</h4>
-            <form action="../Controlador/controlVerificarCancelacion.php" method="post">
+            <form action="../Controlador/controlCerrarComanda.php" method="post">
                 <input type="text" name="tipo" value="<?php echo $tipo?>" hidden id="">
 
                 <table>
@@ -65,7 +68,8 @@ class formComprobanteDevolucion{
                     </tr>
 
                 </table>
-
+                    <input type="text" name="dni" value="<?php echo $dni ?>" hidden id="">
+                    <input type="submit" name="a" id="" value="salir">
             </form>
             </center>
 		</body>

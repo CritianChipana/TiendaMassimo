@@ -21,7 +21,7 @@ class formGenerarComanda{
             $objNav->navShow($listaprivilegios);
             $nombre ="";
             $apellido ="";
-            $dni ="";
+            $dni =0;
             $empleado = "";
 		  ?>
 		<body>
@@ -35,7 +35,7 @@ class formGenerarComanda{
                <P>Usuario: <?php echo $listaprivilegios[$i]['dni'] ?></P>
             <?php
                 $dni = $listaprivilegios[$i]['dni'];
-                $empleado = $listaprivilegios[$i]['nombre']." ".$listaprivilegios[$i]['apellidos'];
+                // $empleado = $listaprivilegios[$i]['nombre']." ".$listaprivilegios[$i]['apellidos'];
         } ?>
         <hr>
         <form action="controlGenerarComanda.php" method="post">
@@ -54,9 +54,9 @@ class formGenerarComanda{
                 <tr>
                     <td><?php echo $row['nombrepr'] ?></td>
                     <td><?php echo $row['precio'] ?></td>
-                    <td><input type="number" name="<?php echo $row['idProducto'];?>" id=""></td>
-                    <td><input type="text" value="<?php echo $row['idProducto'] ?>" name="<?php echo $row['idProducto'];?>i" id="" hidden></td>
-                    <td><input type="checkbox" value="<?php echo $row['precio'];?>" name="<?php echo $row['idProducto'];?>c" id=""></td>
+                    <td><input type="number" name="<?php echo $row['idproducto'];?>" id=""></td>
+                    <td><input type="text" value="<?php echo $row['idproducto'] ?>" name="<?php echo $row['idproducto'];?>i" id="" hidden></td>
+                    <td><input type="checkbox" value="<?php echo $row['precio'];?>" name="<?php echo $row['idproducto'];?>c" id=""></td>
                     
                 </tr>
                 <?php
@@ -68,9 +68,12 @@ class formGenerarComanda{
             <input type="text" name="tamano" value="<?php echo $cont ?>" id="" hidden>
             <input type="text"  value="<?php echo $dni?>" name="dni"  hidden >
             <input type="text"  value="<?php echo $empleado?>" name="empleado"  hidden >
-            <input type="text"  value="<?php echo $this->apellido ?>" name="apellido"  hidden >
+            <input type="text"  value="<?php echo ""; ?>" name="apellido"  hidden >
 
-            <label for="">DNI Cliente:<br>
+            <label for="">Empleado:<br>
+                <input type="text" name="empleado" id=""><br>
+            </label>
+            <label for="">DNI Cliente<br>
                 <input type="number" name="dnicliente" id=""><br>
             </label>
             <label for="">Fecha:<br>

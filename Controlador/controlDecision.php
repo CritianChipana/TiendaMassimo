@@ -16,6 +16,12 @@ if(isset($_POST)){
             echo     "<script>
             alert('No se pudo modificar el Comprobante');
             </script>";
+            include_once("../Vista/formBuscarComprobante.php");
+            include_once("../Modelo/EdetalleUsuario.php");
+            $objetoEntidad = new EdetalleUsuario;
+            $listaprivilegios =$objetoEntidad -> obtenerPrivilegios($dni1);
+            $objetobuscar = new formBuscarComprobante;
+            $objetobuscar -> formBuscarComprobanteShow($listaprivilegios);
         }else{
             // include_once("formComprobanteDevolucion.php");
             include_once("../Vista/formComprobanteDevolucion.php");

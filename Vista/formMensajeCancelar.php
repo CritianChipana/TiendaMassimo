@@ -5,7 +5,7 @@ class formMensajeCancelar{
     function mensajecancelar($codigo, $tipo,$listaPrivilegios){
         $dni = "";
         for($i=0;$i<1;$i++){
-            $dni = $listaPrivilegios[$i]['DNI'];
+            $dni = $listaPrivilegios[$i]['dni'];
         }
 
         ?>
