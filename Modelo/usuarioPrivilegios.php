@@ -28,6 +28,18 @@ class usuarioPrivilegios extends conexion
 
         
     }
+
+    public function eliminarPrivilegiosUsuario($dni)
+    {
+
+        $consulta = "    DELETE FROM usuarioprivilegio" .
+            "   WHERE usuarioprivilegio.DNI = $dni";
+       
+        $this->conectar();
+        $resultado = mysqli_query($this->conectar(),$consulta); 
+        $this->desconectar ();
+        return $resultado;
+    }
 	
    public function registrarPrivilegiosUsuario($privilegiosAsignados, $dni)
     {
@@ -38,28 +50,15 @@ class usuarioPrivilegios extends conexion
        
             $consulta = "    INSERT INTO usuarioprivilegio(DNI, idprivilegio)
                     VALUES" . $privilegios;
-        
- 
-        
+         
         $this->conectar();
         $resultado = mysqli_query($this->conectar(),$consulta); 
-        $this -> desconectar();    
-    } 
-
-        
-        return TRUE;
-    }
-
-    public function eliminarPrivilegiosUsuario($dni)
-    {
-
-        $consulta = "    DELETE FROM usuarioprivilegio" .
-            "   WHERE usuarioprivilegio.DNI = $dni";
-            echo $consulta;  
-        $this->conectar();
-        $resultado = mysqli_query($this->conectar(),$consulta); 
-        $this->desconectar ();
+        $this -> desconectar();  
+        $resultado==TRUE;  
+    }  
         return $resultado;
     }
+
+
 
 }

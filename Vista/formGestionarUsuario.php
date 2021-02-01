@@ -1,25 +1,34 @@
 <?php
 class formGestionarUsuario
 {
-    public function formGestionarUsuarioShow($usuarios, $mensaje)
-    {
-        ?>
-
+    
+    public function formGestionarUsuarioShow($usuarios, $mensaje) {
+        ?>	 
         <!DOCTYPE html>
         <html lang="en">
+
+        <?php 
+			include_once("../shared/nav.php");
+			$nav=new nav();
+			$nav->navShow([]);
+		?>
 
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <title>Gestionar usuario</title>  
+            <title>Gestionar usuario</title> 
+            <link rel="stylesheet" type="text/css" href="../public/css/normalize.css">
+		    <link rel="stylesheet" type="text/css" href="../public/css/nav.css">  
             <link rel="stylesheet" href="../Public/bootstrap.min.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
-        </head>
-        <body>
+        </head> 
+        <body> 
+
+        <script>setTimeout(()=>{document.getElementById("mensaje").style.cssText="display:none"},2000)</script>
         <?php
         if ($mensaje != NULL) {
 
-            echo "<div class= 'alert alert-danger'>{$mensaje}</div>";
+            echo "<div class= 'alert alert-danger' id='mensaje'>{$mensaje}</div>";
         }
         ?>
         <div class="container"> 
@@ -56,13 +65,14 @@ class formGestionarUsuario
                     $tbody = "";
                     $i = 1;
                     foreach ($usuarios as $usuario) {
-                        $estado = "1";
+                        $estado = "ACTIVO";
                         if (strcmp($usuario['estado'], "0") == 0) {
-                            $estado = "0";
+                            $estado = "INACTIVO";
+                            
                         }
-
+     
                         $tbody .= " <tr>";
-                        $tbody .= " <td>{$usuario['DNI']}</td>";
+                        $tbody .= " <td>{$usuario['dni']}</td>";
                         $tbody .= " <td>{$usuario['nombre']}</td>";
                         $tbody .= " <td>{$usuario['apellidos']}</td>"; 
                         $tbody .= " <td>{$usuario['celular']}</td>";
@@ -72,7 +82,7 @@ class formGestionarUsuario
                         $tbody .= " <td>"
                             . "         <form action='../Controlador/getGestionarUsuario.php' method='post'>"
                             . "             <input type='submit' class='material-icons' value='edit' name='modificarUsuario'>"
-                            . "             <input type='hidden' value='{$usuario['DNI']}' name='DNI'>"
+                            . "             <input type='hidden' value='{$usuario['dni']}' name='dni'>"
                             . "         </form>"
                             . "     </td>";
 

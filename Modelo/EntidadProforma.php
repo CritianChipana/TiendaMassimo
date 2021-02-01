@@ -5,7 +5,7 @@ class EntidadProforma extends conexion{
     
       public function listarProforma()
       { 
-            $consulta="SELECT * FROM proforma WHERE idestadocomprobante=1";
+            $consulta="SELECT * FROM proforma WHERE estadocomprobante=1";
             $resultado = mysqli_query($this->conectar(),$consulta);
             $this->desconectar();
             return $resultado;

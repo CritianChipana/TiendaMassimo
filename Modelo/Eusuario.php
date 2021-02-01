@@ -33,7 +33,7 @@ class Eusuario extends conexion
         return $resultado;
     }
 
-    public function buscarUsuarioPorDni($dni) {
+    public function listarUsuarioPorDni($dni) {
         $consulta = " SELECT * FROM usuario   WHERE DNI = $dni"; 
         $usuarioEncontrado =mysqli_query($this->conectar(),$consulta);
         $filas = mysqli_num_rows($usuarioEncontrado);

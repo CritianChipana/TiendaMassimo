@@ -10,33 +10,26 @@ class formAutenticarUsuario
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<title>Autenticacion</title>
 		</head>
+    <link href="Public/css/login.css" rel="stylesheet" id="bootstrap-css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src=Public/js/login.js"></script>
 		
 		<body>
-		<form name="form1" action="Controlador/getUsuario.php" method="POST" >
-		  <table width="268" border="0" align="center">
-            <tr>
-              <td colspan="3" align="center">Autenticacion</td>
-            </tr>
-            <tr>
-              <td width="29">1.</td>
-              <td width="102">Login:</td>
-              <td width="123">
-                <input name="login" type="text" id="login">
-              </td>
-            </tr>
-            <tr>
-              <td>2.</td>
-              <td>Password:</td>
-              <td><input name="password" type="password" id="password"></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td colspan="2" align="right">
-                <input name="bntAceptar" type="submit" id="bntAceptar" value="Ingresar">
-              </td>
-            </tr>
-          </table>
+    <div class="container">
+  	<div class="login-container">
+            <div id="output"></div>
+            <div class="avatar"></div>
+            <div class="form-box">
+		          <form name="form1" action="Controlador/getUsuario.php" method="POST" >
+              <input name="login" type="text" id="login">
+              <input name="password" type="password" id="password">
+              <input name="bntAceptar" type="submit" id="bntAceptar" value="Ingresar">
         </form>
+        </div>
+        </div>  
+    </div>
 		</body>
 		</html>
 		<?php

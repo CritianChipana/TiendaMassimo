@@ -25,14 +25,14 @@
 		<form action="controlVerificarAccesoComprobante.php" method="POST">
 			<p align="center">BUSCAR COMANDA POR ID :<input type="number" min="0" name="idcomanda" required>
 			<input type="hidden" name="idbtn" value="1">
-			<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
+			<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['dni']; ?> ">
 			<input type="submit" name="btnc" value="Buscar">
 			</p>
 		</form>
 		<form action="controlVerificarAccesoComprobante.php" method="POST">
 			<p align="center">
 				<input type="hidden" name="idbtn" value="1">
-				<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
+				<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['dni']; ?> ">
 				<input type="submit" name="fom1" value="Volver Atras">
 			</p>
 		</form>
@@ -63,14 +63,14 @@
 					<tr>
 					<td><?php echo $listadocomandas[$i]['idcomanda'] ?></td>
 					<td><?php echo $listadocomandas[$i]['empleado'] ?></td>
-					<td><?php echo $listadocomandas[$i]['DNI'] ?></td>
+					<td><?php echo $listadocomandas[$i]['dni'] ?></td>
 					<td><?php echo $listadocomandas[$i]['fecha'] ?></td>					
-					<td><?php echo $listadocomandas[$i]['idestadocomprobante'] ?></td>
+					<td><?php echo $listadocomandas[$i]['estadocomprobante'] ?></td>
 					<form  action="controlVerificarAccesoComprobante.php" method="POST">
-					<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
+					<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['dni']; ?> ">
 					<input type="hidden" name="idbtn" value="1">
 					<input type="hidden" name="idcomanda" value=" <?php echo $listadocomandas[$i]['idcomanda']; ?> ">
-					<?php if ($listadocomandas[$i]['idestadocomprobante']==1): ?>
+					<?php if ($listadocomandas[$i]['estadocomprobante']==1): ?>
 					<td><input type="submit" name="btncb" value="Boleta"></td>
 					<td><input type="submit" name="btncf" value="Factura"></td>							
 					<?php endif ?>

@@ -47,7 +47,7 @@
 						}
 						 ?>
 					</table>
-					<input type="hidden" name="dni" value="<?php echo $listaPrivilegios[0]['DNI'];  ?>">
+					<input type="hidden" name="dni" value="<?php echo $listaPrivilegios[0]['dni'];  ?>">
 					<input type="hidden" name="idbtn" value="1">
 					<input type="hidden" name="btnCO" value="1">
 					<input type="hidden" name="btnCOB" value="1">
@@ -57,7 +57,7 @@
 					<form action="controlVerificarAccesoComprobante.php" method="POST">
 						<p align="center">
 							<input type="hidden" name="idbtn" value="1">
-							<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
+							<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['dni']; ?> ">
 							<input type="submit" name="btnc" value="Volver Atras">
 						</p>
 					</form>
@@ -93,7 +93,7 @@
 						}
 						?>
 					</table>
-					<input type="hidden" name="dni" value="<?php echo $listaPrivilegios[0]['DNI'];  ?>">
+					<input type="hidden" name="dni" value="<?php echo $listaPrivilegios[0]['dni'];  ?>">
 					<input type="hidden" name="idbtn" value="1">
 					<input type="hidden" name="btnCO" value="1">
 					<input type="hidden" name="btnCOF" value="1">
@@ -103,7 +103,7 @@
 					<form action="controlVerificarAccesoComprobante.php" method="POST">
 						<p align="center">
 							<input type="hidden" name="idbtn" value="1">
-							<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
+							<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['dni']; ?> ">
 							<input type="submit" name="btnc" value="Volver Atras">
 						</p>
 					</form>

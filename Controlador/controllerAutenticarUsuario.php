@@ -16,6 +16,8 @@ class controllerAutenticarUsuario
 		}
 		else
 		{
+		 
+			$_SESSION["login"]=$login;
 			// include_once("../model/EdetalleUsuario.php");
 			include_once("../Modelo/EdetalleUsuario.php");
 			include_once("../Vista/formBienvenida.php");
@@ -23,6 +25,7 @@ class controllerAutenticarUsuario
 			$objBienvenida = new formBienvenida;
 			$listaPrivilegios = $objDetalle -> obtenerPrivilegios($login);
 			$objBienvenida -> formBienvenidaShow($listaPrivilegios);
+			
 		}
 	}
 }

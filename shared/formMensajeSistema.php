@@ -19,7 +19,7 @@ class formMensajeSistema
 					if (is_array($listaPrivilegios)) {?>
 					<form action="<?php echo $listaPrivilegios[0]['link']; ?> " method="POST" >	
 						<input type="hidden" name="idbtn" value="1">
-						<input type="hidden" name="dni" value="<?php echo $listaPrivilegios[0]['DNI'] ?>">
+						<input type="hidden" name="dni" value="<?php echo $listaPrivilegios[0]['dni'] ?>">
 						<input type="hidden" name="<?php echo $btn ?>" value="<?php echo $btn; ?>">	
 					<?php 
 					if (is_numeric($btn2)){?>
@@ -57,6 +57,7 @@ class formMensajeSistema
 		<body>
 			<p><center><?php  echo strtoupper($mensaje);?></center></p>
 			<p align="center"><?php echo $link;?></p>
+			 
 		</body>
 		</html>
 	
