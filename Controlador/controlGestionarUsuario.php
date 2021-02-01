@@ -28,7 +28,7 @@ class controlGestionarUsuario
             'direccion' => "",
             'correo' => "",
             'estado' => "1",
-            'DNI' => "",
+            'dni' => "",
             'password' => ""
         );
 
@@ -43,7 +43,7 @@ class controlGestionarUsuario
     public function guardarUsuario($dni, $password, $nombre, $apellidos, $celular, $direccion, $correo, $estado)
     { 
         $privilegiosD = new privilegios();
-        $privilegiosSistema = $privilegiosD ->  obtenerPrivilegioSistema();
+        $privilegiosSistema = $privilegiosD -> obtenerPrivilegioSistema();
         $privilegiosAsignados = ARRAY();
         $i = 0;   
         foreach ($privilegiosSistema as $privilegioAsignados) {
@@ -81,7 +81,7 @@ class controlGestionarUsuario
                 'direccion' => $direccion,
                 'correo' => $correo,
                 'estado' => $estado,
-                'DNI' => $dni,
+                'dni' => $dni,
                 'password' => $password
             );
  
@@ -92,7 +92,7 @@ class controlGestionarUsuario
             
 
             $usuario = new Eusuario();
-            $dniActual = (isset($_SESSION['DNI'])) ? $_SESSION['DNI'] : NULL;
+            $dniActual = (isset($_SESSION['dni'])) ? $_SESSION['dni'] : NULL;
             
             if ($dniActual != NULL) { 
           
@@ -105,7 +105,7 @@ class controlGestionarUsuario
             }
 
             if ($resultado == FALSE) {
-                $mensaje = "EL DNI INGRESADO YA EXISTE";
+                $mensaje = "EL dni INGRESADO YA EXISTE";
                 $nuevoUsuario = array(
                     'nombre' => $nombre,
                     'apellidos' => $apellidos,
@@ -113,7 +113,7 @@ class controlGestionarUsuario
                     'direccion' => $direccion,
                     'correo' => $correo,
                     'estado' => $estado,
-                    'DNI' => $dni,
+                    'dni' => $dni,
                     'password' => $password
                     
                 ); 

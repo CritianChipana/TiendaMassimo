@@ -2,11 +2,11 @@
 
 include_once("../Controlador/conexion.php");
 class EntidadRegistrarComanda extends conexion{
-    // INSERT INTO `comanda`(`empleado`, `DNI`, `fecha`, `estadocomprobante`, `dniCliente`, `importe`)
+    // INSERT INTO `comanda`(`empleado`, `dni`, `fecha`, `estadocomprobante`, `dniCliente`, `importe`)
     //  VALUES ("Samantha","1234567","2020-10-10","1","7777777","150")
     public function RegistrarComanda($dni,$fecha,$estado,$dnicliente,$empleado,$importe){
         $sql = "INSERT INTO 
-                comanda(empleado, DNI, fecha, estadocomprobante, dniCliente, importe)
+                comanda(empleado, dni, fecha, estadocomprobante, dniCliente, importe)
                 VALUES('$empleado','$dni','$fecha','$estado','$dnicliente','$importe')";
         // echo $sql;
         $resultado = mysqli_query($this->conectar(),$sql) or die ("Error Resgistrando Comanda");
@@ -38,7 +38,7 @@ class EntidadRegistrarComanda extends conexion{
 
 }
 
-// $consulta = "SELECT * FROM usuario U, privilegios P, usuarioprivilegio DU WHERE U.DNI = '$login' AND U.DNI = DU.DNI AND P.idprivilegio = DU.idprivilegio";
+// $consulta = "SELECT * FROM usuario U, privilegios P, usuarioprivilegio DU WHERE U.dni = '$login' AND U.dni = DU.dni AND P.idprivilegio = DU.idprivilegio";
 // 			$resultado = mysqli_query($this->conectar(),$consulta);
 // 			$aciertos = mysqli_num_rows($resultado);
 // 			for($i = 0; $i < $aciertos; $i++)
@@ -50,7 +50,7 @@ class EntidadRegistrarComanda extends conexion{
 
  <!-- insertar comanda
 
- INSERT INTO `comanda`(`DNI`, `fecha`, `estado`, `dniCliente`, `empleado`, `importe`)
+ INSERT INTO `comanda`(`dni`, `fecha`, `estado`, `dniCliente`, `empleado`, `importe`)
   VALUES ("1234567","2020-01-01","1","74309273","carlos Moreno","120") -->
 
 <!-- insertar detalles comanda -->

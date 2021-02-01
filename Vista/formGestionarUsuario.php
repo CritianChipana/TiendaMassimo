@@ -48,7 +48,7 @@ class formGestionarUsuario
             <table class='table'>
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col" >DNI</th>
+                    <th scope="col" >dni</th>
                     <th scope="col" >Nombre</th>
                     <th scope="col" >Apellidos</th> 
                     <th scope="col" >Celular</th>
@@ -95,6 +95,7 @@ class formGestionarUsuario
                 </tbody>
             </table> 
         </div>
+
         <script src="../Public/js/jquery-3.2.1.js"></script>
         <script src="../Public/bootstrap.min.js"></script>
         </body>

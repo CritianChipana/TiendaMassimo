@@ -10,7 +10,7 @@ class usuarioPrivilegios extends conexion
         $consulta = "SELECT * FROM privilegios" .
             "   INNER JOIN usuarioprivilegio" .
             "   ON usuarioprivilegio.idprivilegio = privilegios.idprivilegio" .
-            "   WHERE usuarioprivilegio.DNI = $login"; 
+            "   WHERE usuarioprivilegio.dni = $login"; 
         $resultado = mysqli_query($this->conectar(),$consulta);   
         $this -> desconectar(); 
  
@@ -33,7 +33,7 @@ class usuarioPrivilegios extends conexion
     {
 
         $consulta = "    DELETE FROM usuarioprivilegio" .
-            "   WHERE usuarioprivilegio.DNI = $dni";
+            "   WHERE usuarioprivilegio.dni = $dni";
        
         $this->conectar();
         $resultado = mysqli_query($this->conectar(),$consulta); 
@@ -48,7 +48,7 @@ class usuarioPrivilegios extends conexion
         for ($j = 0; $j < count($privilegiosAsignados); $j++) {
             $privilegios = "(" . $dni . ", " . $privilegiosAsignados[$j]['idprivilegio'] . ");";
        
-            $consulta = "    INSERT INTO usuarioprivilegio(DNI, idprivilegio)
+            $consulta = "    INSERT INTO usuarioprivilegio(dni, idprivilegio)
                     VALUES" . $privilegios;
          
         $this->conectar();
