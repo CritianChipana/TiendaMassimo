@@ -10,7 +10,7 @@ if(isset($_POST['botonGenerarComprobanteDevolucion'])){
     $objetobuscar -> formBuscarComprobanteShow();
 }else{
     
-    include_once("../../shared/formMensajeSistema.php");
+    include_once("../shared/formMensajeSistema.php");
     $objetoMensaje = new formMensajeSistema;
     $objetoMensaje -> formMensajeSistemaShow2("Acceso Incorrecto","<a href='../index.php'>Ingresar Usuario</a>");
     

@@ -1,8 +1,6 @@
 <?php 
  	class nav{ 
  	public function navShow($listaPrivilegios) {
-		 if($listaPrivilegios==[]) $listaPrivilegios = $_SESSION['privilegios'];
-		 $_SESSION['privilegios']= $listaPrivilegios;
  	?>
 		<link rel="stylesheet" type="text/css" href="../public/css/normalize.css">
 		<link rel="stylesheet" type="text/css" href="../public/css/nav.css"> 
