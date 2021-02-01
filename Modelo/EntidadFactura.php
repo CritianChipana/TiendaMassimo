@@ -20,8 +20,8 @@
             $empleado=$fila[0]['empleado'];
             $fecha=$fila[0]['fecha'];
             $total=$fila[0]['total'];
-            $idestadocomprobante=$fila[0]['idestadocomprobante'];
-            $insertfactura="INSERT INTO factura (empleado,ruc,fecha,total,idestadocomprobante) VALUES ( '$empleado','$ruc','$fecha','$total','$idestadocomprobante')";
+            $estadocomprobante=$fila[0]['estadocomprobante'];
+            $insertfactura="INSERT INTO factura (empleado,ruc,fecha,total,estadocomprobante) VALUES ( '$empleado','$ruc','$fecha','$total','$estadocomprobante')";
             $resultado = mysqli_query($this->conectar(),$insertfactura);
 
             $insertdetallefactura="INSERT INTO detallefactura (idfactura,idproducto,cantidad,precio) VALUES ";
@@ -35,7 +35,7 @@
             $insertdetallefactura=substr($insertdetallefactura, 0, -1);
             $resultado = mysqli_query($this->conectar(),$insertdetallefactura);
 
-           $updateestado="UPDATE comanda SET idestadocomprobante=0 WHERE idcomanda='$idcomanda'";
+           $updateestado="UPDATE comanda SET estadocomprobante=0 WHERE idcomanda='$idcomanda'";
            $resultado = mysqli_query($this->conectar(),$updateestado); 
            $this->desconectar(); 
 		}
@@ -55,8 +55,8 @@
             $fechaentrega=$fila[0]['fechaentrega'];
             $idcliente=$fila[0]['idcliente'];
             $total=$fila[0]['total'];
-            $idestadocomprobante=$fila[0]['idestadocomprobante'];
-            $insertfactura="INSERT INTO factura(empleado,ruc,fecha,fechaentrega,idcliente,total,idestadocomprobante) VALUES ('$empleado','$ruc','$fecha','$fechaentrega','$idcliente','$total','$idestadocomprobante')";
+            $estadocomprobante=$fila[0]['estadocomprobante'];
+            $insertfactura="INSERT INTO factura(empleado,ruc,fecha,fechaentrega,idcliente,total,estadocomprobante) VALUES ('$empleado','$ruc','$fecha','$fechaentrega','$idcliente','$total','$estadocomprobante')";
             $resultado = mysqli_query($this->conectar(),$insertfactura);
 
             $insertdetallefactura="INSERT INTO detallefactura (idfactura,idproducto,cantidad,precio) VALUES ";
@@ -70,7 +70,7 @@
             $insertdetallefactura=substr($insertdetallefactura, 0, -1);
             $resultado = mysqli_query($this->conectar(),$insertdetallefactura);
 
-            $updateestado="UPDATE proforma SET idestadocomprobante=0 WHERE idproforma='$idproforma'";
+            $updateestado="UPDATE proforma SET estadocomprobante=0 WHERE idproforma='$idproforma'";
             $resultado = mysqli_query($this->conectar(),$updateestado); 
             $this->desconectar();
 		}

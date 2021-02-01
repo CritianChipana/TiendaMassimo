@@ -16,8 +16,8 @@
             $empleado=$fila[0]['empleado'];
             $fecha=$fila[0]['fecha'];
             $total=$fila[0]['total'];
-            $idestadocomprobante=$fila[0]['idestadocomprobante'];
-            $insertboleta="INSERT INTO boleta (empleado,fecha,total,idestadocomprobante) VALUES ('$empleado','$fecha','$total','$idestadocomprobante')";
+            $estadocomprobante=$fila[0]['estadocomprobante'];
+            $insertboleta="INSERT INTO boleta (empleado,fecha,total,estadocomprobante) VALUES ('$empleado','$fecha','$total','$estadocomprobante')";
             $resultado = mysqli_query($this->conectar(),$insertboleta);
 
             $insertdetalleboleta="INSERT INTO detalleboleta (idboleta,idproducto,cantidad,precio) VALUES ";
@@ -32,7 +32,7 @@
                 $insertdetalleboleta=substr($insertdetalleboleta, 0, -1);
             $resultado = mysqli_query($this->conectar(),$insertdetalleboleta);
 
-            $updateestado="UPDATE comanda SET idestadocomprobante=0 WHERE idcomanda='$idcomanda'";
+            $updateestado="UPDATE comanda SET estadocomprobante=0 WHERE idcomanda='$idcomanda'";
             $resultado = mysqli_query($this->conectar(),$updateestado);
           
 		}
@@ -49,8 +49,8 @@
             $fechaentrega=$fila[0]['fechaentrega'];
             $idcliente=$fila[0]['idcliente'];           
             $total=$fila[0]['total'];
-            $idestadocomprobante=$fila[0]['idestadocomprobante'];
-            $insertboleta="INSERT INTO boleta (empleado,fecha,fechaentrega,idcliente,total,idestadocomprobante) VALUES ('$empleado','$fecha','$fechaentrega','$idcliente','$total','$idestadocomprobante')";
+            $estadocomprobante=$fila[0]['estadocomprobante'];
+            $insertboleta="INSERT INTO boleta (empleado,fecha,fechaentrega,idcliente,total,estadocomprobante) VALUES ('$empleado','$fecha','$fechaentrega','$idcliente','$total','$estadocomprobante')";
             $resultado = mysqli_query($this->conectar(),$insertboleta);
 
             $insertdetalleboleta="INSERT INTO detalleboleta (idboleta,idproducto,cantidad,precio) VALUES ";
@@ -64,7 +64,7 @@
                 $insertdetalleboleta=substr($insertdetalleboleta, 0, -1);
             $resultado = mysqli_query($this->conectar(),$insertdetalleboleta);
 
-            $updateestado="UPDATE proforma SET idestadocomprobante=0 WHERE idproforma='$idproforma'";
+            $updateestado="UPDATE proforma SET estadocomprobante=0 WHERE idproforma='$idproforma'";
             $resultado = mysqli_query($this->conectar(),$updateestado);
             $this->desconectar();
 		}
