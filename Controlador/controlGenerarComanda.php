@@ -109,6 +109,19 @@ if(isset($_POST['a'])){
             $objetoMostrarComanda = new EntidadDetallesComanda;
             $l = $objetoMostrarComanda->listarComanda($idcomandabuscado);
             $objetocomanda -> formMostrarComandaShow($listaprivilegios,$l,$cont);
+        }else{
+            echo    "<script>
+                    alert('No se encontro dato');
+                </script>";
+        include_once("../Vista/formGenerarComanda.php");
+        include_once("../Modelo/EntidadProducto.php");
+        include_once("../Modelo/EdetalleUsuario.php");
+        $objetoEntidad = new EdetalleUsuario;
+        $listaprivilegios =$objetoEntidad -> obtenerPrivilegios($dni);
+        $objetoEntidad = new EntidadProducto;
+        $objetoComanda = new formGenerarComanda();
+        $listaproductos = $objetoEntidad->listar_producto();
+        $objetoComanda ->formGenerarComandaShow($listaprivilegios,$listaproductos);
         }
     }
 
@@ -120,5 +133,5 @@ if(isset($_POST['a'])){
     $objetoMensaje -> formMensajeSistemaShow2("Acceso Incorrecto","<a href='../index.php'>Ingresar Usuario</a>");
     
 }
-
+// .
 ?>

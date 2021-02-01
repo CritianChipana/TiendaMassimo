@@ -12,7 +12,22 @@
     $objetoEntidad = new EntidadProducto;
     $objetoComanda = new formGenerarComanda();
     $listaproductos = $objetoEntidad->listar_producto();
-    $objetoComanda ->formGenerarComandaShow($listaprivilegios,$listaproductos);
+    if($listaprivilegios && $listaproductos){
+        $objetoComanda ->formGenerarComandaShow($listaprivilegios,$listaproductos);
+    }else{
+        echo    "<script>
+                    alert('No se encontro Producto');
+                </script>";
+        include_once("../Vista/formGenerarComanda.php");
+        include_once("../Modelo/EntidadProducto.php");
+        include_once("../Modelo/EdetalleUsuario.php");
+        $objetoEntidad = new EdetalleUsuario;
+        $listaprivilegios =$objetoEntidad -> obtenerPrivilegios($dni);
+        $objetoEntidad = new EntidadProducto;
+        $objetoComanda = new formGenerarComanda();
+        $listaproductos = $objetoEntidad->listar_producto();
+        $objetoComanda ->formGenerarComandaShow($listaprivilegios,$listaproductos);
+    }
 
     }else{
      
@@ -21,5 +36,5 @@
         $objetoMensaje -> formMensajeSistemaShow2("Acceso Incorrecto","<a href='../index.php'>Ingresar Usuario</a>");
         
     }
-
+// .
 ?>

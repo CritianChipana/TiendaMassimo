@@ -15,5 +15,5 @@ if(isset($_POST['a'])){
     $objetoMensaje -> formMensajeSistemaShow2("Acceso Incorrecto","<a href='../index.php'>Ingresar Usuario</a>");
     
 }
-
+// .
 ?>

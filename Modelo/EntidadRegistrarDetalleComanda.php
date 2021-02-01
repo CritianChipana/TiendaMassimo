@@ -26,3 +26,4 @@ class EntidadRegistrarDetalleComanda extends conexion{
 VALUES ("6","1","1","1") -->
 <?php
 
+// .

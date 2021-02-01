@@ -7,7 +7,7 @@ if(isset($_POST['bntAceptar']))
 	{
 		include_once("../shared/formMensajeSistema.php");
 		$objMensaje = new formMensajeSistema;
-		$objMensaje -> formMensajeSistemaShow("datos no aceptables","<a href='../index.php'>Intentar nuevamente</a>");
+		$objMensaje -> formMensajeSistemaShow2("datos no aceptables","<a href='../index.php'>Intentar nuevamente</a>");
 	}
 	else
 	{
@@ -20,6 +20,6 @@ else
 {
 	include_once("../shared/formMensajeSistema.php");
 	$objMensaje = new formMensajeSistema;
-	$objMensaje -> formMensajeSistemaShow("ACCESO NO PERMITIDO...","<a href='../index.php'>Ir al inicio</a>");
+	$objMensaje -> formMensajeSistemaShow2("ACCESO NO PERMITIDO...","<a href='../index.php'>Ir al inicio</a>");
 }
 ?>

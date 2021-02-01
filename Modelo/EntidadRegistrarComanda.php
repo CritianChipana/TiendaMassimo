@@ -57,3 +57,4 @@ class EntidadRegistrarComanda extends conexion{
 
 <!-- INSERT INTO `detalle_comanda`( `cantidad`, `precio`, `idProducto`, `idcomanda`)
  VALUES ("2","35","2","6") -->
+ <!-- . -->

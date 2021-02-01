@@ -19,4 +19,5 @@ class EntidadDetallesComanda extends conexion{
 }
 // SELECT * from comanda C, detallecomanda D, producto P where C.idcomanda =10 and
 //  D.idProducto = P.idProducto and C.idcomanda = D.idcomanda
+// .
 ?>
