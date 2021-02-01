@@ -6,14 +6,16 @@ include_once '../Modelo/privilegios.php';
 include_once '../Modelo/usuarioPrivilegios.php';
 include_once '../Modelo/Eusuario.php';
 
+
 class controlGestionarUsuario
 {
     public function gestionarUsuario()
     {
         $usuarios = new Eusuario();
-        $usuariosEncontrados = $usuarios -> listarUsuarios();
+        $usuariosEncontrados = $usuarios -> listarUsuarios(); 
         $formGestionarUsuario = new formGestionarUsuario();
-        $formGestionarUsuario -> formGestionarUsuarioShow($usuariosEncontrados, NULL);
+       
+        $formGestionarUsuario -> formGestionarUsuarioShow(  $usuariosEncontrados, NULL);
         
     }
 
@@ -50,18 +52,18 @@ class controlGestionarUsuario
                 $privilegiosAsignados[$i] = $privilegioAsignados;
                 $i++;
             }
-        echo $idprivilegio;
+        //echo $idprivilegio;
         }
         //var_dump($privilegiosSistema); 
-        if ( strlen($nombre) < 0 ||  strlen($apellidos) < 0 ||
+        if ( strlen($nombre) < 1 ||  strlen($apellidos) < 1 ||
         strlen($dni) != 8|| strlen($direccion) < 5 ||
         $i == 0 || strlen($password) <4 ) {
         $mensaje = "Correcciones <br>";
-        if (strlen($nombre) < 0 ) { $mensaje .= "El campo nombre esta vacio.<br>";
+        if (strlen($nombre) < 1 ) { $mensaje .= "El campo nombre esta vacio.<br>";
         }
-        if (strlen($apellidos) < 0) {$mensaje .= "El campo apellidos esta vacio <br>";
+        if (strlen($apellidos) < 1) {$mensaje .= "El campo apellidos esta vacio <br>";
         }
-        if (strlen($dni) != 8 ) {$mensaje .= "Escriba solo 8 caracterres.<br>";
+        if (strlen($dni) != 8 ) {$mensaje .= "Escriba solo 8 caracterres.<br>";$dni="";
         }
         if (strlen($direccion) < 4 ) {
             $mensaje .= "Escriba más de cinco caracterres en el campo direccion.<br>";
@@ -129,7 +131,7 @@ class controlGestionarUsuario
                 $usuariosEncontrados = $usuario -> listarUsuarios();
                 
                 $formGestionarUsuario = new formGestionarUsuario();
-                $formGestionarUsuario -> formGestionarUsuarioShow($usuariosEncontrados, $mensaje);
+                $formGestionarUsuario -> formGestionarUsuarioShow( $usuariosEncontrados, $mensaje);
                 
             }
         }

@@ -3,6 +3,7 @@ class formUsuarioPrivilegios
 {
     public function formUsuarioPrivilegiosShow ($usuario, $privilegiosAsignados, $privilegiosSistema, $mensaje)
     {
+        
         $estadoUsuario = ""; 
         if (strcmp($usuario['estado'], "1") == 0) {
             $estadoUsuario = "checked";
@@ -18,7 +19,11 @@ class formUsuarioPrivilegios
             <title>Detalle usuario</title>
             <link rel="stylesheet" href="../Public/bootstrap.min.css"> 
         </head>
-
+        <?php 
+			include_once("../shared/nav.php");
+			$nav=new nav();
+			$nav->navShow([]);
+		?>
         <body>
         <?php
         if ($mensaje != NULL) {
