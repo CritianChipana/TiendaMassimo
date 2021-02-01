@@ -73,6 +73,15 @@
             $updateestado="UPDATE proforma SET estadocomprobante=0 WHERE idproforma='$idproforma'";
             $resultado = mysqli_query($this->conectar(),$updateestado); 
             $this->desconectar();
-		}
+        }
+        
+        function facturasEntreFechas($fechaInicial,$fechaFinal)
+        {
+            $query = "select * from factura where fecha between '".$fechaInicial."' and '".$fechaFinal."'";
+
+            $resultado = mysqli_query($this->conectar(),$query);
+			$this->desConectar();
+			return $resultado;
+        }
 	}
  ?>
