@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST['a'])){
-
+// .
 
     // public function RegistrarComanda($dni,$fecha,$estado,$dnicliente,$empleado,$importe)
     $btnp=(isset($_POST['btnp'])) ? $_POST['btnp'] : '';

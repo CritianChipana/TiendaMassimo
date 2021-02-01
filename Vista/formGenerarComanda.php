@@ -67,13 +67,13 @@ class formGenerarComanda{
             <br><hr><br>
             <input type="text" name="tamano" value="<?php echo $cont ?>" id="" hidden>
             <input type="text"  value="<?php echo $dni?>" name="dni"  hidden >
-            <input type="text"  value="<?php echo $empleado?>" name="empleado"  hidden >
+            <!-- <input type="text"  value="<?php ?>" name="empleado"  hidden > -->
             <input type="text"  value="<?php echo ""; ?>" name="apellido"  hidden >
 
             <label for="">Empleado:<br>
                 <input type="text" name="empleado" id=""><br>
             </label>
-            <label for="">DNI Cliente<br>
+            <label for="">dni Cliente<br>
                 <input type="number" name="dnicliente" id=""><br>
             </label>
             <label for="">Fecha:<br>
@@ -95,3 +95,4 @@ class formGenerarComanda{
 }
 
 ?>
+<!-- . -->

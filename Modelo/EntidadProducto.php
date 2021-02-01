@@ -18,6 +18,6 @@ class EntidadProducto extends conexion{
         return $resultado;
     }
 
-
+// .
 }
 ?>

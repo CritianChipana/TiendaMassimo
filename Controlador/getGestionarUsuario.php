@@ -3,7 +3,7 @@ ini_set('display_errors', 'On');
 session_start(); 
     if (isset($_POST['p-6'])) {
         include_once 'controlGestionarUsuario.php';
-        unset($_SESSION['DNI']);
+        unset($_SESSION['dni']);
         $controlGestionarUsuario = new controlGestionarUsuario();
         $controlGestionarUsuario -> gestionarUsuario();
     
@@ -15,8 +15,8 @@ session_start();
         $controlGestionarUsuario -> nuevoUsuario();
     
 	} else if (isset($_POST['modificarUsuario'])) {
-        $dni = $_POST['DNI'];
-        $_SESSION['DNI'] = $dni;
+        $dni = $_POST['dni'];
+        $_SESSION['dni'] = $dni;
          
         include_once 'controlGestionarUsuario.php';
         $controlGestionarUsuario = new controlGestionarUsuario();
@@ -24,7 +24,7 @@ session_start();
   
 	} else if (isset($_POST['guardarUsuario'])) {
                
-        $dni = (isset($_POST['DNI'])) ? trim($_POST['DNI']): '';
+        $dni = (isset($_POST['dni'])) ? trim($_POST['dni']): '';
         
         $password = trim($_POST['password']);
         $nombre = trim($_POST['nombre']);

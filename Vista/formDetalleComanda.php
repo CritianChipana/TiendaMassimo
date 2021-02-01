@@ -17,7 +17,7 @@
 			<body>
 			<?php
 				$num_comanda=count($detalleComanda);
-		//		echo $listaPrivilegios[0]['DNI'];
+		//		echo $listaPrivilegios[0]['dni'];
 		//		var_dump($detalleComanda);
 				if ($btnTC=='Boleta') { ?>
 					<div style="text-align:center;">

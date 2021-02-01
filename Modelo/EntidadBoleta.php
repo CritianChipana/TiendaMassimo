@@ -37,7 +37,7 @@
           
 		}
 		public function agregarBoletaP($idproforma){
-			$consulta="SELECT * FROM detalleProforma DP, producto PR, proforma P, usuario U WHERE DP.idproforma = '$idproforma' AND DP.idproducto=PR.idproducto AND DP.idproforma=P.idproforma AND P.DNI=U.DNI ";
+			$consulta="SELECT * FROM detalleProforma DP, producto PR, proforma P, usuario U WHERE DP.idproforma = '$idproforma' AND DP.idproducto=PR.idproducto AND DP.idproforma=P.idproforma AND P.dni=U.dni ";
             $resultado = mysqli_query($this->conectar(),$consulta);
             $num_registros = mysqli_num_rows($resultado);
             

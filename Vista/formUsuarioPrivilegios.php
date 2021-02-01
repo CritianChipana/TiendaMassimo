@@ -39,17 +39,17 @@ class formUsuarioPrivilegios
                                 <h5>USUARIO: </h5>
                                 <div class="form-row mb-0">
                                     <div class="form-group col-md-5">
-                                            <?php if ($usuario['DNI']==""){?> 
-                                                <label >DNI: </label>
-                                                <input class="form-control " type="text" name="DNI" maxlength="8" 
-                                                    value="<?PHP ECHO $usuario['DNI']; ?>">
+                                            <?php if ($usuario['dni']==""){?> 
+                                                <label >dni: </label>
+                                                <input class="form-control " type="text" name="dni" maxlength="8" 
+                                                    value="<?PHP ECHO $usuario['dni']; ?>">
                                          
                                             <?php } else{ ?> 
-                                                    <label >DNI: </label>
-                                                    <input class="form-control" type="hidden" name="DNI" maxlength="8" 
-                                                    value="<?PHP ECHO $usuario['DNI']; ?>">
+                                                    <label >dni: </label>
+                                                    <input class="form-control" type="hidden" name="dni" maxlength="8" 
+                                                    value="<?PHP ECHO $usuario['dni']; ?>">
                                                     <input class="form-control" type="text" name="0" maxlength="8" 
-                                                    value="<?PHP ECHO $usuario['DNI']; ?>" disabled>
+                                                    value="<?PHP ECHO $usuario['dni']; ?>" disabled>
                                                 
                                             <?php } ?>
                                     </div>
@@ -139,7 +139,7 @@ class formUsuarioPrivilegios
                     <form action="../Controlador/getGestionarUsuario.php" method="post">
                         <input type="submit" class="btn btn-primary" value="ATRÁS" name="p-6">
                     </form>
-                    <input type="hidden" value="<?php ECHO $usuario['DNI']; ?>" name="dniAntiguo">
+                    <input type="hidden" value="<?php ECHO $usuario['dni']; ?>" name="dniAntiguo">
                     <input type="submit" class="btn btn-success" value="GUARDAR" name="guardarUsuario">
                     
                 </div>
