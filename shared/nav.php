@@ -34,7 +34,7 @@
 	          <form  action=" <?php echo $listaPrivilegios[$i]['link']; ?> " method="POST">
 	          	<input type="hidden" name="idbtn" value="1">
 	          	<input type="hidden" name="fom1" value="1">
-	          	<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
+	          	<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['dni']; ?> ">
 	          	<input type="submit" name="nombrep" value="<?php echo $listaPrivilegios[$i]['nombrep']; ?>">
 				<input name="p-<?php echo $listaPrivilegios[$i]['idprivilegio'] ?>" type="hidden"/>
 	          </form>

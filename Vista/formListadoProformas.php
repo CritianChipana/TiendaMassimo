@@ -25,14 +25,14 @@
 		<form action="controlVerificarAccesoComprobante.php" method="POST">
 			<p align="center">BUSCAR PROFORMA POR ID :<input type="text" name="idproforma">
 			<input type="hidden" name="idbtn" value="1">
-			<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
+			<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['dni']; ?> ">
 			<input type="submit" name="btnp" value="Buscar">
 			</p>
 		</form>
 		<form action="controlVerificarAccesoComprobante.php" method="POST">
 			<p align="center">
 				<input type="hidden" name="idbtn" value="1">
-				<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
+				<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['dni']; ?> ">
 				<input type="submit" name="fom1" value="Volver Atras">
 			</p>
 		</form>
@@ -64,7 +64,7 @@
 			?>
 						<tr>
 						<td><?php echo $listadoproformas[$i]['idproforma'] ?></td>
-						<td><?php echo $listadoproformas[$i]['DNI'] ?></td>
+						<td><?php echo $listadoproformas[$i]['dni'] ?></td>
 						<td><?php echo $listadoproformas[$i]['idcliente'] ?></td>
 						<td><?php echo $listadoproformas[$i]['fecha'] ?></td>
 						<td><?php echo $listadoproformas[$i]['fechaentrega'] ?></td>
@@ -72,7 +72,7 @@
 						<td><?php echo $listadoproformas[$i]['total'] ?></td>
 						<td><?php echo $listadoproformas[$i]['estadocomprobante'] ?></td>
 						<form  action="controlVerificarAccesoComprobante.php" method="POST">
-						<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['DNI']; ?> ">
+						<input type="hidden" name="dni" value=" <?php echo $listaPrivilegios[0]['dni']; ?> ">
 						<input type="hidden" name="idbtn" value="1">
 						<input type="hidden" name="idproforma" value=" <?php echo $listadoproformas[$i]['idproforma']; ?> ">
 

@@ -64,7 +64,7 @@ class formGestionarUsuario
                         }
      
                         $tbody .= " <tr>";
-                        $tbody .= " <td>{$usuario['DNI']}</td>";
+                        $tbody .= " <td>{$usuario['dni']}</td>";
                         $tbody .= " <td>{$usuario['nombre']}</td>";
                         $tbody .= " <td>{$usuario['apellidos']}</td>"; 
                         $tbody .= " <td>{$usuario['celular']}</td>";
@@ -74,7 +74,7 @@ class formGestionarUsuario
                         $tbody .= " <td>"
                             . "         <form action='../Controlador/getGestionarUsuario.php' method='post'>"
                             . "             <input type='submit' class='material-icons' value='edit' name='modificarUsuario'>"
-                            . "             <input type='hidden' value='{$usuario['DNI']}' name='DNI'>"
+                            . "             <input type='hidden' value='{$usuario['dni']}' name='dni'>"
                             . "         </form>"
                             . "     </td>";
 
