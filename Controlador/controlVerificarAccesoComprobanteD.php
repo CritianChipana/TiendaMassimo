@@ -3,11 +3,21 @@
 // control verificar Acceso
 
 
-if(isset($_POST['botonGenerarComprobanteDevolucion'])){
+if(isset($_POST['dni'])){
+    $dni =$_POST['dni'];
     
-    include_once("formBuscarComprobante.php");
+  
+    include_once("../Vista/formBuscarComprobante.php");
+    // include_once("../Modelo/EntidadProducto.php");
+    include_once("../Modelo/EdetalleUsuario.php");
+    $objetoEntidad = new EdetalleUsuario;
+    $listaprivilegios =$objetoEntidad -> obtenerPrivilegios($dni);
+    // $objetoEntidad = new EntidadProducto;
     $objetobuscar = new formBuscarComprobante;
-    $objetobuscar -> formBuscarComprobanteShow();
+    // $listaproductos = $objetoEntidad->listar_producto();
+    $objetobuscar -> formBuscarComprobanteShow($listaprivilegios);
+
+
 }else{
     
     include_once("../shared/formMensajeSistema.php");

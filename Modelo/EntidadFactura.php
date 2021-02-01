@@ -43,7 +43,7 @@
 
             $conexion = new Conexion();
             $idproforma=1;
-			$consulta = "SELECT * FROM detalleProforma DC, producto PR, proforma P, usuario U WHERE DC.idproforma = '$idproforma' AND DC.idproducto=PR.idproducto AND DC.idproforma=P.idproforma AND P.DNI=U.DNI";
+			$consulta = "SELECT * FROM detalleProforma DC, producto PR, proforma P, usuario U WHERE DC.idproforma = '$idproforma' AND DC.idproducto=PR.idproducto AND DC.idproforma=P.idproforma AND P.dni=U.dni";
             $resultado = mysqli_query($this->conectar(),$consulta);
             $num_registros = mysqli_num_rows($resultado);
             for($i = 0; $i < $num_registros; $i++){

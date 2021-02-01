@@ -177,28 +177,28 @@
 				$objConfirmacion->formNotificarComprobanteShow($listaPrivilegios);
 				}
 		}
-		else if(isset($_POST['btndb'])){
-			$btnGR=$_POST['btndb'];
-			$dni=$_POST['dni'];
-			$idboleta=$_POST['idboleta'];
-			include_once("../Modelo/EdetalleUsuario.php");
-			include_once("controlGenerarComprobante.php");
-			$objDetalle = new EdetalleUsuario;
-			$listaPrivilegios = $objDetalle -> obtenerPrivilegios($dni);
-			$objComprobante= new controlGenerarComprobante($idproforma);
-			$objComprobante->detalleProformaID();
-		}
-		else if(isset($_POST['btndf'])){
-			$btnGR=$_POST['btndf'];
-			$dni=$_POST['dni'];
-			$idproforma=$_POST['idproforma'];
-			include_once("../Modelo/EdetalleUsuario.php");
-			include_once("controlGenerarComprobante.php");
-			$objDetalle = new EdetalleUsuario;
-			$listaPrivilegios = $objDetalle -> obtenerPrivilegios($dni);
-			$objComprobante= new controlGenerarComprobante($idcomanda);
-			$objComprobante->detalleProformaID();
-		}		
+		// else if(isset($_POST['btndb'])){
+		// 	$btnGR=$_POST['btndb'];
+		// 	$dni=$_POST['dni'];
+		// 	$idboleta=$_POST['idboleta'];
+		// 	include_once("../Modelo/EdetalleUsuario.php");
+		// 	include_once("controlGenerarComprobante.php");
+		// 	$objDetalle = new EdetalleUsuario;
+		// 	$listaPrivilegios = $objDetalle -> obtenerPrivilegios($dni);
+		// 	$objComprobante= new controlGenerarComprobante($idproforma);
+		// 	// $objComprobante->detalleProformaID();
+		// }
+		// else if(isset($_POST['btndf'])){
+		// 	$btnGR=$_POST['btndf'];
+		// 	$dni=$_POST['dni'];
+		// 	$idproforma=$_POST['idproforma'];
+		// 	include_once("../Modelo/EdetalleUsuario.php");
+		// 	include_once("controlGenerarComprobante.php");
+		// 	$objDetalle = new EdetalleUsuario;
+		// 	$listaPrivilegios = $objDetalle -> obtenerPrivilegios($dni);
+		// 	$objComprobante= new controlGenerarComprobante($idcomanda);
+		// 	// $objComprobante->detalleProformaID();
+		// }		
 	}
 	else
 	{

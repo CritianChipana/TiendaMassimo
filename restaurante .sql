@@ -43,7 +43,7 @@ CREATE TABLE `boleta` (
 CREATE TABLE `comanda` (
   `idcomanda` int(11) NOT NULL,
   `empleado` varchar(30) NOT NULL,
-  `DNI` int(11) DEFAULT NULL,
+  `dni` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `estadocomprobante` varchar(20) DEFAULT NULL,
   `dniCliente` char(18) DEFAULT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE `comanda` (
 -- Volcado de datos para la tabla `comanda`
 --
 
-INSERT INTO `comanda` (`idcomanda`, `empleado`, `DNI`, `fecha`, `estadocomprobante`, `dniCliente`, `importe`) VALUES
+INSERT INTO `comanda` (`idcomanda`, `empleado`, `dni`, `fecha`, `estadocomprobante`, `dniCliente`, `importe`) VALUES
 (1, 'Marina del Bosque', 1234567, '2021-01-29', '1', '74306285', 121),
 (2, 'Marcos de la Prada', 1234567, '2021-01-21', '1', '74306285', 102),
 (3, 'Jorge Torres', 1234567, '2021-01-05', '1', '74306285', 86),
@@ -181,7 +181,7 @@ INSERT INTO `producto` (`idProducto`, `nombrepr`, `descripcion`, `precio`, `foto
 
 CREATE TABLE `proforma` (
   `idproforma` int(11) NOT NULL,
-  `DNI` int(11) DEFAULT NULL,
+  `dni` int(11) DEFAULT NULL,
   `idcliente` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `fechaentrega` date DEFAULT NULL,
@@ -194,7 +194,7 @@ CREATE TABLE `proforma` (
 -- Volcado de datos para la tabla `proforma`
 --
 
-INSERT INTO `proforma` (`idproforma`, `DNI`, `idcliente`, `fecha`, `fechaentrega`, `ruc`, `total`, `idestadocomprobante`) VALUES
+INSERT INTO `proforma` (`idproforma`, `dni`, `idcliente`, `fecha`, `fechaentrega`, `ruc`, `total`, `idestadocomprobante`) VALUES
 (1, 123, 1, '2021-01-29', '2021-01-30', 987654321, 86, 1),
 (2, 123, 1, '2021-01-29', '2021-01-30', 0, 43, 1);
 
@@ -205,7 +205,7 @@ INSERT INTO `proforma` (`idproforma`, `DNI`, `idcliente`, `fecha`, `fechaentrega
 --
 
 CREATE TABLE `usuario` (
-  `DNI` int(11) NOT NULL,
+  `dni` int(11) NOT NULL,
   `password` varchar(20) DEFAULT NULL,
   `nombre` varchar(20) DEFAULT NULL,
   `apellidos` varchar(20) DEFAULT NULL,
@@ -219,7 +219,7 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`DNI`, `password`, `nombre`, `apellidos`, `estado`, `celular`, `direccion`, `correo`) VALUES
+INSERT INTO `usuario` (`dni`, `password`, `nombre`, `apellidos`, `estado`, `celular`, `direccion`, `correo`) VALUES
 (123, '123', 'Luis Gabriel', 'Coaquira Calloapaza', '1', '938165285', 'Mz P, Lt 10, St,20', 'kidmeg100@hotmail.co'),
 (1234, '1234', 'camilo', 'Chipana', '1', '986661493', 'Bolivar', 'tucariñoso@gmail.com'),
 (1234567, '1234567', 'cristian', 'Chipana', '1', '986661493', 'km 40', 'tucariñoso@gmail.com');
@@ -232,7 +232,7 @@ INSERT INTO `usuario` (`DNI`, `password`, `nombre`, `apellidos`, `estado`, `celu
 
 CREATE TABLE `usuarioprivilegio` (
   `idDetatallePrivilegio` int(11) NOT NULL,
-  `DNI` int(11) DEFAULT NULL,
+  `dni` int(11) DEFAULT NULL,
   `idprivilegio` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -240,7 +240,7 @@ CREATE TABLE `usuarioprivilegio` (
 -- Volcado de datos para la tabla `usuarioprivilegio`
 --
 
-INSERT INTO `usuarioprivilegio` (`idDetatallePrivilegio`, `DNI`, `idprivilegio`) VALUES
+INSERT INTO `usuarioprivilegio` (`idDetatallePrivilegio`, `dni`, `idprivilegio`) VALUES
 (1, 1234567, 1),
 (2, 1234567, 2),
 (3, 1234567, 3),
@@ -264,7 +264,7 @@ ALTER TABLE `boleta`
 --
 ALTER TABLE `comanda`
   ADD PRIMARY KEY (`idcomanda`),
-  ADD KEY `R_33` (`DNI`);
+  ADD KEY `R_33` (`dni`);
 
 --
 -- Indices de la tabla `detallecomanda`
@@ -305,20 +305,20 @@ ALTER TABLE `producto`
 --
 ALTER TABLE `proforma`
   ADD PRIMARY KEY (`idproforma`),
-  ADD KEY `R_27` (`DNI`);
+  ADD KEY `R_27` (`dni`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`DNI`);
+  ADD PRIMARY KEY (`dni`);
 
 --
 -- Indices de la tabla `usuarioprivilegio`
 --
 ALTER TABLE `usuarioprivilegio`
   ADD PRIMARY KEY (`idDetatallePrivilegio`),
-  ADD KEY `R_57` (`DNI`),
+  ADD KEY `R_57` (`dni`),
   ADD KEY `R_58` (`idprivilegio`);
 
 --
@@ -377,7 +377,7 @@ ALTER TABLE `proforma`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `DNI` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1234568;
+  MODIFY `dni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1234568;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarioprivilegio`
@@ -393,7 +393,7 @@ ALTER TABLE `usuarioprivilegio`
 -- Filtros para la tabla `comanda`
 --
 ALTER TABLE `comanda`
-  ADD CONSTRAINT `R_33` FOREIGN KEY (`DNI`) REFERENCES `usuario` (`DNI`);
+  ADD CONSTRAINT `R_33` FOREIGN KEY (`dni`) REFERENCES `usuario` (`dni`);
 
 --
 -- Filtros para la tabla `detallecomanda`
@@ -413,13 +413,13 @@ ALTER TABLE `detalleproforma`
 -- Filtros para la tabla `proforma`
 --
 ALTER TABLE `proforma`
-  ADD CONSTRAINT `R_27` FOREIGN KEY (`DNI`) REFERENCES `usuario` (`DNI`);
+  ADD CONSTRAINT `R_27` FOREIGN KEY (`dni`) REFERENCES `usuario` (`dni`);
 
 --
 -- Filtros para la tabla `usuarioprivilegio`
 --
 ALTER TABLE `usuarioprivilegio`
-  ADD CONSTRAINT `R_57` FOREIGN KEY (`DNI`) REFERENCES `usuario` (`DNI`),
+  ADD CONSTRAINT `R_57` FOREIGN KEY (`dni`) REFERENCES `usuario` (`dni`),
   ADD CONSTRAINT `R_58` FOREIGN KEY (`idprivilegio`) REFERENCES `privilegios` (`idprivilegio`);
 COMMIT;
 

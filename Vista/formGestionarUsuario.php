@@ -48,7 +48,7 @@ class formGestionarUsuario
             <table class='table'>
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col" >DNI</th>
+                    <th scope="col" >dni</th>
                     <th scope="col" >Nombre</th>
                     <th scope="col" >Apellidos</th> 
                     <th scope="col" >Celular</th>
