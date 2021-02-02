@@ -27,7 +27,7 @@
 	    </div> 
 	    <div class="nav-bg">
 	      <nav class="navegacion-principal contenedor">
-	          <a href="miperfil.php">Mi Perfil</a>
+	          <!-- <a href="miperfil.php">Mi Perfil</a> -->
 	          <?php
 	          $numero = count($listaPrivilegios);
 	          for($i = 0; $i < $numero; $i++){

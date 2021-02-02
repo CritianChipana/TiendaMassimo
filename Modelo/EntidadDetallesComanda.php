@@ -5,7 +5,7 @@ class EntidadDetallesComanda extends conexion{
     public function listarComanda($idcomanda){
 
         $sql = "SELECT * from comanda C, detallecomanda D, producto P 
-        where C.idcomanda =$idcomanda and D.idProducto = P.idProducto and C.idcomanda = D.idcomanda";
+        where C.idcomanda =$idcomanda and D.idproducto = P.idproducto and C.idcomanda = D.idcomanda";
         $resultado =mysqli_query($this->conectar(),$sql);
         $this->desConectar();
 

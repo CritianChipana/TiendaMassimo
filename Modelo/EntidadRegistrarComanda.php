@@ -6,7 +6,11 @@ class EntidadRegistrarComanda extends conexion{
     //  VALUES ("Samantha","1234567","2020-10-10","1","7777777","150")
     public function RegistrarComanda($dni,$fecha,$estado,$dnicliente,$empleado,$importe){
         $sql = "INSERT INTO 
+<<<<<<< HEAD
                 comanda(empleado, dni, fecha, estadocomprobante, dniCliente, importe)
+=======
+                comanda(empleado, dni, fecha, estadocomprobante, idcliente, total)
+>>>>>>> 0009ddb5ac627fe05ac09e0c1627ee05f2efcd8a
                 VALUES('$empleado','$dni','$fecha','$estado','$dnicliente','$importe')";
         // echo $sql;
         $resultado = mysqli_query($this->conectar(),$sql) or die ("Error Resgistrando Comanda");
@@ -19,8 +23,8 @@ class EntidadRegistrarComanda extends conexion{
 
     }
 
-    public function BuscarComanda($dnicliente,$fecha){
-        $sql = "SELECT idcomanda FROM comanda WHERE dniCliente = '$dnicliente' and fecha = '$fecha' ";
+    public function BuscarComanda($idcliente,$fecha){
+        $sql = "SELECT idcomanda FROM comanda WHERE idcliente = '$idcliente' and fecha = '$fecha' ";
         $resultado = mysqli_query($this->conectar(),$sql);
         $this->desConectar();
         $dato = mysqli_fetch_assoc($resultado);
@@ -47,7 +51,7 @@ class EntidadRegistrarComanda extends conexion{
 // 			$this -> desConectar();
 
 ?>
-
+<!-- . -->
  <!-- insertar comanda
 
  INSERT INTO `comanda`(`dni`, `fecha`, `estado`, `dniCliente`, `empleado`, `importe`)
