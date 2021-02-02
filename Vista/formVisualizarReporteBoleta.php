@@ -6,8 +6,13 @@
 
 
 
-    function mostrarBoletas($fechaInicio,$fechaFinal)
+    function mostrarBoletas($fechaInicio,$fechaFinal,$listaPrivilegios)
     {
+        $dni = "";
+        for($i=0;$i<1;$i++){
+            $dni = $listaPrivilegios[$i]['dni'];
+        }
+
         include_once("../Modelo/EntidadBoleta.php");
         $boleta = new EntidadBoleta;
         $resultado = $boleta->boletasentreFechas($fechaInicio,$fechaFinal);
@@ -28,8 +33,14 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" media="all">
                 <title>Boletas</title>
+                <link rel="stylesheet" type="text/css" href="../public/css/normalize.css">
+		        <link rel="stylesheet" type="text/css" href="../public/css/nav.css"> 
             </head>
             <body>
+                        <?php include_once("../shared/nav.php");
+                            $objNav=new nav();
+                            $objNav->navShow($listaPrivilegios);
+                        ?>
                 <div id="reporte_impresion">
                 <nav class="navbar navbar-light bg-light">
                     <div class="container-fluid">
@@ -89,6 +100,7 @@
                         <div class="col-2 col-md-2">
                             <form action="controlVerificarAccesoReportedeVentas.php" method="post">
                                 <input name="p-7" type="hidden"/>
+                                <input type="hidden" name="dni" value="<?php echo $dni; ?>">   
                                 <button type="submit" style="width: 100%;" class="btn btn-secondary btn-sm" >Atras</button>
                             </form>
                         </div>
@@ -130,6 +142,6 @@
         
    }
  }
-
+// .
 
 ?>

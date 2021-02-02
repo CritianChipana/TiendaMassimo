@@ -4,8 +4,13 @@
 
 class  formGenerarReportedeVentas{
 
-    public function MostrarformReportedeVentasShow()
+    public function MostrarformReportedeVentasShow($listaPrivilegios)
     {
+
+        $dni = "";
+        for($i=0;$i<1;$i++){
+            $dni = $listaPrivilegios[$i]['dni'];
+        }
     ?>
     <html lang="en">
         <head>
@@ -13,13 +18,22 @@ class  formGenerarReportedeVentas{
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+            <link rel="stylesheet" type="text/css" href="../public/css/normalize.css">
+		    <link rel="stylesheet" type="text/css" href="../public/css/nav.css"> 
             <title>Hola</title>
         </head>
         <body style="background-color: #bbdefb;">
+                <?php include_once("../shared/nav.php");
+                            $objNav=new nav();
+                            $objNav->navShow($listaPrivilegios);
+                ?>
+                <br>
+            <h2> <center>Búsqueda de Facturas y boletas</center></h2>
             <nav class="navbar navbar-light " style="background-color: #bbdefb;">
                 <div class="container-fluid">
-                    <h2> Búsqueda de Facturas y boletas</h2>
+                    <!-- <h2> <center>Búsqueda de Facturas y boletas</center></h2> -->
                 </div>
+                
                 <div class="container-fluid">
                     
                 </div>
@@ -49,6 +63,7 @@ class  formGenerarReportedeVentas{
                             </div>
                             
                             <input type="hidden" name="seleccion" id="seleccion">
+                            <input type="hidden" name="dni" value="<?php echo $dni; ?>">
                             <div style="width: 32px; height: 12px; "></div>
                             <div>
 
@@ -59,7 +74,7 @@ class  formGenerarReportedeVentas{
 
                                 </div>
                                 
-                                vb
+                                
                             </div>
                         </div>
                     </form>
@@ -93,5 +108,5 @@ class  formGenerarReportedeVentas{
 
 }
 
-
+// .
 ?>

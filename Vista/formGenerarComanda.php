@@ -77,7 +77,7 @@ class formGenerarComanda{
                 <input type="number" name="dnicliente" id=""><br>
             </label>
             <label for="">Fecha:<br>
-                <input type="datetime" name="fecha" id=""><br>
+                <input type="date" name="fecha" id=""><br>
             </label>
             <input name="a" type="submit" value="generar">
         </form>
