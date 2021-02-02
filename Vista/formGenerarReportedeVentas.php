@@ -20,7 +20,7 @@ class  formGenerarReportedeVentas{
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
             <link rel="stylesheet" type="text/css" href="../public/css/normalize.css">
 		    <link rel="stylesheet" type="text/css" href="../public/css/nav.css"> 
-            <title>Hola</title>
+            <title>Generar Reporte</title>
         </head>
         <body style="background-color: #bbdefb;">
                 <?php include_once("../shared/nav.php");
