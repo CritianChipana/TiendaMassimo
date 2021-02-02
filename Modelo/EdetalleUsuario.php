@@ -15,7 +15,7 @@
 			for($i = 0; $i < $aciertos; $i++)
 				$filaEncontrada[$i] = mysqli_fetch_array($resultado);
 			return($filaEncontrada);
-			$this -> desConectar();
+			$this -> desconectar();
 		}
 	} 
 ?>

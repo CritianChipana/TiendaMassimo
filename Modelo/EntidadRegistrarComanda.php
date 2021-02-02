@@ -6,15 +6,11 @@ class EntidadRegistrarComanda extends conexion{
     //  VALUES ("Samantha","1234567","2020-10-10","1","7777777","150")
     public function RegistrarComanda($dni,$fecha,$estado,$dnicliente,$empleado,$importe){
         $sql = "INSERT INTO 
-<<<<<<< HEAD
-                comanda(empleado, dni, fecha, estadocomprobante, dniCliente, importe)
-=======
                 comanda(empleado, dni, fecha, estadocomprobante, idcliente, total)
->>>>>>> 0009ddb5ac627fe05ac09e0c1627ee05f2efcd8a
                 VALUES('$empleado','$dni','$fecha','$estado','$dnicliente','$importe')";
         // echo $sql;
         $resultado = mysqli_query($this->conectar(),$sql) or die ("Error Resgistrando Comanda");
-        $this->desConectar();
+        $this->desconectar();
         if($resultado){
             return 1;
         }else{
@@ -26,7 +22,7 @@ class EntidadRegistrarComanda extends conexion{
     public function BuscarComanda($idcliente,$fecha){
         $sql = "SELECT idcomanda FROM comanda WHERE idcliente = '$idcliente' and fecha = '$fecha' ";
         $resultado = mysqli_query($this->conectar(),$sql);
-        $this->desConectar();
+        $this->desconectar();
         $dato = mysqli_fetch_assoc($resultado);
         // $aciertos = mysqli_num_rows($resultado);
         if($resultado){
@@ -48,7 +44,7 @@ class EntidadRegistrarComanda extends conexion{
 // 			for($i = 0; $i < $aciertos; $i++)
 // 				$filaEncontrada[$i] = mysqli_fetch_array($resultado);
 // 			return($filaEncontrada);
-// 			$this -> desConectar();
+// 			$this -> desconectar();
 
 ?>
 <!-- . -->

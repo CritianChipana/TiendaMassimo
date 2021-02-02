@@ -7,8 +7,13 @@ include_once("../Modelo/EntidadFactura.php");
     {
 
 
-        function mostrarFacturas($fechaInicio,$fechaFinal)
+        function mostrarFacturas($fechaInicio,$fechaFinal,$listaPrivilegios)
         {
+            $dni = "";
+            for($i=0;$i<1;$i++){
+                $dni = $listaPrivilegios[$i]['dni'];
+            }
+
             include_once("../Modelo/EntidadFactura.php");
             $factura = new EntidadFactura;
             $resultado = $factura->facturasEntreFechas($fechaInicio,$fechaFinal);
@@ -32,6 +37,11 @@ include_once("../Modelo/EntidadFactura.php");
                     <title>Boletas</title>
                 </head>
                 <body>
+                        <?php include_once("../shared/nav.php");
+                            $objNav=new nav();
+                            $objNav->navShow($listaPrivilegios);
+                        ?>
+
                     <div id="reporte_impresion">
                     <nav class="navbar navbar-light bg-light">
                         <div class="container-fluid">
@@ -91,6 +101,7 @@ include_once("../Modelo/EntidadFactura.php");
                             <div class="col-2 col-md-2">
                                 <form action="controlVerificarAccesoReportedeVentas.php" method="post">
                                     <input name="p-7" type="hidden"/>
+                                    <input type="hidden" name="dni" value="<?php echo $dni; ?>">   
                                     <button type="submit" style="width: 100%;" class="btn btn-secondary btn-sm" >Atras</button>
                                 </form>
                             </div>
@@ -135,6 +146,6 @@ include_once("../Modelo/EntidadFactura.php");
 
 
 
-
+// .
 
 ?>

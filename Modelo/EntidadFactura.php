@@ -5,11 +5,10 @@
 		public function listarFactura(){
 			$consulta="SELECT * FROM factura";
 			$resultado = mysqli_query($this->conectar(),$consulta);
-			$this->desConectar();
+			$this->desconectar();
 			return $resultado;
 		}
-		public function agregarFacturaC($idcomanda,$ruc){
-
+		public function agregarFacturaC($idcomanda,$ruc){ 
             
 			$consulta = "SELECT * FROM detalleComanda DC, producto PR, Comanda C  WHERE DC.idcomanda = '$idcomanda' AND DC.idproducto=PR.idproducto AND DC.idcomanda=C.idcomanda";
             $resultado = mysqli_query($this->conectar(),$consulta);
@@ -80,7 +79,7 @@
             $query = "select * from factura where fecha between '".$fechaInicial."' and '".$fechaFinal."'";
 
             $resultado = mysqli_query($this->conectar(),$query);
-			$this->desConectar();
+			$this->desconectar();
 			return $resultado;
         }
 	}

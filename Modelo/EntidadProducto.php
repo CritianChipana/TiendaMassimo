@@ -14,7 +14,7 @@ class EntidadProducto extends conexion{
     public function listar_producto(){
         $consulta = "select * from producto";
         $resultado = mysqli_query($this->conectar(),$consulta);
-        $this->desConectar();
+        $this->desconectar();
         return $resultado;
     }
 

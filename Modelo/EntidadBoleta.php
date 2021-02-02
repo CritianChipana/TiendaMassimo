@@ -74,7 +74,7 @@
             $query = "select * from boleta where fecha between '".$fechaInicial."' and '".$fechaFinal."'";
 
             $resultado = mysqli_query($this->conectar(),$query);
-			$this->desConectar();
+			$this->desconectar();
 			return $resultado;
             
         }

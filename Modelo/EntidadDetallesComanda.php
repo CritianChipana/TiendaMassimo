@@ -7,7 +7,7 @@ class EntidadDetallesComanda extends conexion{
         $sql = "SELECT * from comanda C, detallecomanda D, producto P 
         where C.idcomanda =$idcomanda and D.idproducto = P.idproducto and C.idcomanda = D.idcomanda";
         $resultado =mysqli_query($this->conectar(),$sql);
-        $this->desConectar();
+        $this->desconectar();
 
         $filas = mysqli_num_rows($resultado);
         for($i=0;$i<$filas;$i++){

@@ -13,7 +13,7 @@ class Eusuario extends conexion
 		// $password = md5($password);
 		$consulta = "SELECT * FROM usuario WHERE  dni='$login'  AND '$password' = password AND estado = 1";
 		$resultado = mysqli_query($this->conectar(),$consulta);
-		$this -> desConectar();
+		$this -> desconectar();
 		$aciertos = mysqli_num_rows($resultado);
 		if($aciertos == 1)
 			return(1);

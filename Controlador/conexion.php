@@ -8,7 +8,7 @@ class conexion
 		// mysqli_select_db('sistema');
 		return $a;
 	}
-	protected function desConectar()
+	protected function desconectar()
 	{
 		mysqli_close($this->conectar());
 		

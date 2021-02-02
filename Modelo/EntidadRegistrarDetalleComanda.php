@@ -9,7 +9,7 @@ class EntidadRegistrarDetalleComanda extends conexion{
             VALUES ('$idcomanda','$idproductos[$i]','$cantidades[$i]','$precios[$i]')
             ";
             $resultado = mysqli_query($this->conectar(),$sql) or  die ("Error Resgistrando Detalle Comanda $i") ;
-            $this->desConectar();
+            $this->desconectar();
         }
         if($resultado){
             return 1;
