@@ -70,14 +70,10 @@ class formGenerarComanda{
             <!-- <input type="text"  value="<?php ?>" name="empleado"  hidden > -->
             <input type="text"  value="<?php echo ""; ?>" name="apellido"  hidden >
 
-<<<<<<< HEAD
-            <label for="">dni Cliente:<br>
-=======
             <label for="">Empleado:<br>
                 <input type="text" name="empleado" id=""><br>
             </label>
             <label for="">dni Cliente<br>
->>>>>>> 0009ddb5ac627fe05ac09e0c1627ee05f2efcd8a
                 <input type="number" name="dnicliente" id=""><br>
             </label>
             <label for="">Fecha:<br>
