@@ -35,7 +35,7 @@
  			</div>
 
 
- 				<?php  var_dump($detallemenu) ?>
+ 				<?php // var_dump($detallemenu) ?>
  				<?php// var_dump($listaprivilegios) ?>
  		</body>
  		</html>
