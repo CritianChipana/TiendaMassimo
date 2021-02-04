@@ -5,11 +5,10 @@
 		public function listarFactura(){
 			$consulta="SELECT * FROM factura";
 			$resultado = mysqli_query($this->conectar(),$consulta);
-			$this->desConectar();
+			$this->desconectar();
 			return $resultado;
 		}
-		public function agregarFacturaC($idcomanda,$ruc){
-
+		public function agregarFacturaC($idcomanda,$ruc){ 
             
 			$consulta = "SELECT * FROM detalleComanda DC, producto PR, Comanda C  WHERE DC.idcomanda = '$idcomanda' AND DC.idproducto=PR.idproducto AND DC.idcomanda=C.idcomanda";
             $resultado = mysqli_query($this->conectar(),$consulta);
@@ -43,7 +42,7 @@
 
             $conexion = new Conexion();
             $idproforma=1;
-			$consulta = "SELECT * FROM detalleProforma DC, producto PR, proforma P, usuario U WHERE DC.idproforma = '$idproforma' AND DC.idproducto=PR.idproducto AND DC.idproforma=P.idproforma AND P.DNI=U.DNI";
+			$consulta = "SELECT * FROM detalleProforma DC, producto PR, proforma P, usuario U WHERE DC.idproforma = '$idproforma' AND DC.idproducto=PR.idproducto AND DC.idproforma=P.idproforma AND P.dni=U.dni";
             $resultado = mysqli_query($this->conectar(),$consulta);
             $num_registros = mysqli_num_rows($resultado);
             for($i = 0; $i < $num_registros; $i++){
@@ -73,6 +72,15 @@
             $updateestado="UPDATE proforma SET estadocomprobante=0 WHERE idproforma='$idproforma'";
             $resultado = mysqli_query($this->conectar(),$updateestado); 
             $this->desconectar();
-		}
+        }
+        
+        function facturasEntreFechas($fechaInicial,$fechaFinal)
+        {
+            $query = "select * from factura where fecha between '".$fechaInicial."' and '".$fechaFinal."'";
+
+            $resultado = mysqli_query($this->conectar(),$query);
+			$this->desconectar();
+			return $resultado;
+        }
 	}
  ?>

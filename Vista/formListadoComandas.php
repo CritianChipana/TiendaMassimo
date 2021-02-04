@@ -43,7 +43,7 @@
 				<tr>
 					<th>Nr°</th>
 					<th>Empleado</th>
-					<th>DNI</th>
+					<th>dni</th>
 					<th>fecha</th>
 					<th>Estado</th>					
 					<th colspan="3">ACCION</th>

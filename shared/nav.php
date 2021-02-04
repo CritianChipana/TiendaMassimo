@@ -1,6 +1,8 @@
 <?php 
  	class nav{ 
  	public function navShow($listaPrivilegios) {
+		if($listaPrivilegios==[]) $listaPrivilegios = $_SESSION['privilegios'];
+		$_SESSION['privilegios']= $listaPrivilegios;
  	?>
 		<link rel="stylesheet" type="text/css" href="../public/css/normalize.css">
 		<link rel="stylesheet" type="text/css" href="../public/css/nav.css"> 
@@ -25,7 +27,7 @@
 	    </div> 
 	    <div class="nav-bg">
 	      <nav class="navegacion-principal contenedor">
-	          <a href="miperfil.php">Mi Perfil</a>
+	          <!-- <a href="miperfil.php">Mi Perfil</a> -->
 	          <?php
 	          $numero = count($listaPrivilegios);
 	          for($i = 0; $i < $numero; $i++){
@@ -38,7 +40,7 @@
 	          	<input type="submit" name="nombrep" value="<?php echo $listaPrivilegios[$i]['nombrep']; ?>">
 				<input name="p-<?php echo $listaPrivilegios[$i]['idprivilegio'] ?>" type="hidden"/>
 	          </form>
-    <!--a class="principal" href="<!-?php echo $listaPrivilegios[$i]['link']."?idbtn=".$listaPrivilegios[$i]['idprivilegio']."&dni=".$listaPrivilegios[$i]['DNI']; ?>"><!-?php echo $listaPrivilegios[$i]['nombrep']; ?></a> -->
+    <!--a class="principal" href="<!-?php echo $listaPrivilegios[$i]['link']."?idbtn=".$listaPrivilegios[$i]['idprivilegio']."&dni=".$listaPrivilegios[$i]['dni']; ?>"><!-?php echo $listaPrivilegios[$i]['nombrep']; ?></a> -->
 	          <?php
 	          }
 	          ?>
