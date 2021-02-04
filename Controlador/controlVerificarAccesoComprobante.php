@@ -57,7 +57,7 @@
 					else{
 						include_once("../shared/formMensajeSistema.php");
 						$objMensaje = new formMensajeSistema;
-						$objMensaje -> formMensajeSistemaShow("NO SE ENCONTRARON COINCIDENCIAS","../Controlador/controlVerificarAccesoComprobante.php",$listaPrivilegios,$btnp,"");
+						$objMensaje -> formMensajeComrprobanteShow("NO SE ENCONTRARON COINCIDENCIAS","../Controlador/controlVerificarAccesoComprobante.php",$listaPrivilegios,$btnp,"");
 					}
 				}
 				else
@@ -198,13 +198,30 @@
 			$listaPrivilegios = $objDetalle -> obtenerPrivilegios($dni);
 			$objComprobante= new controlGenerarComprobante($idcomanda);
 			$objComprobante->detalleProformaID();
-		}		
+		}
+		else if(isset($_POST['btnlp'])){
+			$dni=$_POST['dni'];
+			include_once("../Modelo/EdetalleUsuario.php");
+			include_once("../Vista/formGestionarProducto.php");
+			$objDetalle = new EdetalleUsuario;
+			$listaPrivilegios = $objDetalle -> obtenerPrivilegios($dni);
+
+		}
+		else if(isset($_POST['btnap'])){
+			
+		}
+		else if(isset($_POST['btnep'])){
+			
+		}				
+
+
 	}
-	else
-	{
-		include_once("../shared/formMensajeSistema.php");
-		$objMensaje = new formMensajeSistema;
-		$objMensaje -> formMensajeSistemaShow("ACCESO DENEGADO NO SE HA INICIADO SESION","../index.php","","","","");
-	}
+
+else
+{
+	include_once("../shared/formMensajeSistema.php");
+	$objMensaje = new formMensajeSistema;
+	$objMensaje -> formMensajeSistemaShow("ACCESO DENEGADO NO SE HA INICIADO SESION","../index.php","","","","");
+}
 
  ?>

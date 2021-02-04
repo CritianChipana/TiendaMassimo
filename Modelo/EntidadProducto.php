@@ -1,7 +1,4 @@
 <?php
-
-// include_once("../model/conexion.php");
-// include_once("../../model/conexion.php");
 include_once("../Controlador/conexion.php");
 
 class EntidadProducto extends conexion{
@@ -17,7 +14,11 @@ class EntidadProducto extends conexion{
         $this->desConectar();
         return $resultado;
     }
+    public function agregarproducto($nombre,$descripcion,$precio){
 
+        $consulta="INSERT INTO producto (nombrepr,descripcion,precio) VALUES ('$nombre','$descripcion',$precio)";
+        $resultado=mysqli_query($this->conectar(),$consulta);
+    }
 
 }
 ?>

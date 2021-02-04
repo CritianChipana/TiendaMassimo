@@ -72,7 +72,7 @@
 					<input type="hidden" name="idcomanda" value=" <?php echo $listadocomandas[$i]['idcomanda']; ?> ">
 					<?php if ($listadocomandas[$i]['estadocomprobante']==1): ?>
 					<td><input type="submit" name="btncb" value="Boleta"></td>
-					<td><input type="submit" name="btncf" value="Factura"></td>							
+					<td><input type="submit" name="btncf" value="Factura"></td>
 					<?php endif ?>
 			
 					</form>
