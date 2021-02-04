@@ -6,6 +6,7 @@
  	?>
 		<link rel="stylesheet" type="text/css" href="../public/css/normalize.css">
 		<link rel="stylesheet" type="text/css" href="../public/css/nav.css"> 
+		 
  	    <div class="global-fixed">
 	       <header class="header1">
 	        <div class="headerdiv">

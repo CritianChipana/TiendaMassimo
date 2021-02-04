@@ -14,15 +14,11 @@ class EntidadProducto extends conexion{
         $this->desconectar();
         return $resultado;
     }
-    public function agregarproducto($nombre,$descripcion,$precio){
-
-<<<<<<< HEAD
+    /*
+    public function agregarproducto($nombre,$descripcion,$precio){ 
         $consulta="INSERT INTO producto (nombrepr,descripcion,precio) VALUES ('$nombre','$descripcion',$precio)";
         $resultado=mysqli_query($this->conectar(),$consulta);
-    }
-
-=======
-// .
->>>>>>> 7813f2df0311e53bb52b2cf8a9ee11e399fff6bc
+   
+    } */
 }
 ?>
