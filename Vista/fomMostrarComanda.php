@@ -9,7 +9,7 @@ class formMostrarComanda{
 		<html xmlns="http://www.w3.org/1999/xhtml">
 		<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		<title>bienvenida</title>
+		<title>Generar Porforma</title>
 		<link rel="stylesheet" type="text/css" href="../public/css/normalize.css">
 		<link rel="stylesheet" type="text/css" href="../public/css/nav.css"> 
 		</head>
@@ -73,5 +73,5 @@ class formMostrarComanda{
     }
 
 }
-
+// .
 ?>

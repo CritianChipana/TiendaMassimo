@@ -11,8 +11,8 @@
 	        <div class="headerdiv">
 	          <div class="nombre">
 	            <a href="principal.php">
-	              <span>RESTAURANT</span>
-	              <span class="color-logo"> MASSIMO</span>  
+	              <span>RESTAURANTE</span>
+	              <span class="color-logo"> Sazon y Sabor</span>  
 	            </a>
 	          </div>
 	          <div class="informacion">

@@ -22,6 +22,7 @@ if(isset($_POST['a'])){
     $precios = array();
     $idproductos = array();
     $negativo =0;
+    $mesa = $_POST['mesa'];
 
     //CAPTURAR 
     for($i=1; $i<=$tamano;$i++){
@@ -35,19 +36,18 @@ if(isset($_POST['a'])){
                 } 
             }
         }
-
     }
 
    
-    if($_POST['fecha']!=''){
-        $contadorFecha++;
-    }
-    if($_POST['dnicliente']!=''){
-        $contadorcliente++;
-    }
-    if($_POST['empleado']!=''){
-        $contadorempleado++;
-    }
+    // if($_POST['fecha']!=''){
+    //     $contadorFecha++;
+    // }
+    // if($_POST['dnicliente']!=''){
+    //     $contadorcliente++;
+    // }
+    // if($_POST['empleado']!=''){
+    //     $contadorempleado++;
+    // }
 
         // CAPTURAR TODOS LOS PLATOS SELECCIONADOS POR EL CHECKBOX
     for($i=1;$i<=$tamano;$i++){
@@ -68,14 +68,13 @@ if(isset($_POST['a'])){
 
     //CALCULAR IMPORTE
     if($cont==$cont2){
-
         for($i=0; $i<$cont;$i++){
             $importe = $importe + $precios[$i]*$cantidades[$i];
         }
     }
 
     // echo $importe."-";
-    if($negativo!=0 || $cont == 0 || $cont2==0 || $cont!=$cont2|| $contadorcliente==0 || $contadorFecha==0 || $contadorempleado==0){
+    if($negativo!=0 || $cont == 0 || $cont2==0 || $cont!=$cont2 || $mesa=="Mesa"){
         echo    "<script>
                     alert('LLENE LOS CAMPOS CORRECTAMENTE');
                 </script>";
@@ -94,17 +93,23 @@ if(isset($_POST['a'])){
     // public function RegistrarComanda($dni,$fecha,$estado,$dnicliente,$empleado,$importe)
         include_once("../Modelo/EntidadRegistrarComanda.php");
         $Rcomanda= new EntidadRegistrarComanda;
-        $Rresu = $Rcomanda -> RegistrarComanda($dni,$fecha,$estado,$dnicliente,$empleado,$importe);
-    
+        $Rresu = $Rcomanda -> RegistrarComanda($dni,$fecha,$estado,$dnicliente,$empleado,$importe,$mesa);
+        // echo $Rresu;
         // INSERTAR DETALLES COMANDA:
         // public function BuscarComanda($dnicliente,$fecha){
         // public function RegistraDetalleComanda($numero,$cantidades,$precios,$idproductos,$idcomanda){
         include_once("../Modelo/EntidadRegistrarDetalleComanda.php");
         $idcomandabuscado =$Rcomanda -> BuscarComanda($dnicliente,$fecha);
-        // echo $idcomandabuscado;
+        $idnewcomanda = 0; 
+        // echo print_r($idcomandabuscado);
+            foreach ($idcomandabuscado as $row => $value ){
+                $idnewcomanda = $value;
+            } 
+        // echo $idnewcomanda;
+        // echo "asdasdas";
         include_once("../Modelo/EntidadRegistrarDetalleComanda.php");
         $Dcomanda = new EntidadRegistrarDetalleComanda;
-        $Dresu = $Dcomanda->RegistraDetalleComanda($cont,$cantidades,$precios,$idproductos,$idcomandabuscado);
+        $Dresu = $Dcomanda->RegistraDetalleComanda($cont,$cantidades,$precios,$idproductos,$idnewcomanda);
        
         if($Rresu ==1 && $Dresu==1){
             include_once("../Modelo/EdetalleUsuario.php");
@@ -114,7 +119,7 @@ if(isset($_POST['a'])){
             $listaprivilegios = $objetodetalle-> obtenerPrivilegios($dni);
             $objetocomanda = new formMostrarComanda;
             $objetoMostrarComanda = new EntidadDetallesComanda;
-            $l = $objetoMostrarComanda->listarComanda($idcomandabuscado);
+            $l = $objetoMostrarComanda->listarComanda($idnewcomanda);
             $objetocomanda -> formMostrarComandaShow($listaprivilegios,$l,$cont);
         }
     }
@@ -127,5 +132,5 @@ if(isset($_POST['a'])){
     $objetoMensaje -> formMensajeSistemaShow2("Acceso Incorrecto","<a href='../index.php'>Ingresar Usuario</a>");
     
 }
-
+// .
 ?>

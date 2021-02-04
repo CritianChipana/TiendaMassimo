@@ -22,6 +22,7 @@ class EntidadRegistrarDetalleComanda extends conexion{
 ?>
 
 
+
 <!-- INSERT INTO `detallecomanda`(`idcomanda`, `idProducto`, `cantidad`, `precio`) 
 VALUES ("6","1","1","1") -->
 <?php

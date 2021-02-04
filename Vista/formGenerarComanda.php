@@ -1,18 +1,19 @@
 <?php
 
 class formGenerarComanda{
-   
-
+    
+    
     function __construct(){
-  
+        
     }
-
+    
     public function formGenerarComandaShow($listaprivilegios,$listaproductos){
+        include_once("../Modelo/EntidadListarComanda.php");
         ?>
         <!DOCTYPE html>
 		<html>
 		<head>
-			<title>Generar Comanda</title>
+			<title>Generar Porforma</title>
 		</head>
 		<link rel="stylesheet" type="text/css" href="../public/css/main.css">
 		<?php
@@ -64,23 +65,76 @@ class formGenerarComanda{
             }
             ?>
             </table>
-            <br><hr><br>
+            
+<!-- __________________________________________________________________________________________ -->
+            <!-- include_once(); -->
+            <?php 
+                $Lmesas = new EntidadListarComanda;
+                $mesas = $Lmesas->Listarmesas3();
+            ?><br>
+            <label for="">Numero de Mesa:</label>
+            <select name="mesa" id="">
+                <option value="mesa">Mesa</option>
+                <?php foreach($mesas as $row){  ?>
+                    <option value="<?php echo $row['numeromesa'] ?>"><?php echo $row['numeromesa'] ?></option>
+                <?php }  ?>
+            </select><br>
+<!-- _________________________________________________________________________________________________________ -->
+
             <input type="text" name="tamano" value="<?php echo $cont ?>" id="" hidden>
             <input type="text"  value="<?php echo $dni?>" name="dni"  hidden >
             <!-- <input type="text"  value="<?php ?>" name="empleado"  hidden > -->
             <input type="text"  value="<?php echo ""; ?>" name="apellido"  hidden >
 
-            <label for="">Empleado:<br>
-                <input type="text" name="empleado" id=""><br>
-            </label>
-            <label for="">dni Cliente<br>
-                <input type="number" name="dnicliente" id=""><br>
-            </label>
-            <label for="">Fecha:<br>
-                <input type="date" name="fecha" id=""><br>
-            </label>
-            <input name="a" type="submit" value="generar">
+            <!-- <label for="">Empleado:<br></label> -->
+                <input type="text" name="empleado" id="" hidden>
+            <!-- <label for="">Cliente<br></label> -->
+                <input type="number" name="dnicliente" id="" hidden>
+            <!-- <label for="">Fecha:<br></label> -->
+                <input type="date" name="fecha" id="" hidden><br>
+            <input name="a" type="submit" value="generar"><br>
         </form>
+        <hr>
+<!-- ____________________________________________________________________________________ -->
+            <?php
+               
+                $productos = new EntidadListarComanda;
+                $Lproductos = $productos -> ListarComandaShow($dni);
+
+            ?>
+            
+            <div>
+                <table class="tabla">
+                    <thead class="cabeza">
+                        <!-- <th>COMANDA</th> -->
+                        <!-- <th>EMPLEADO</th> -->
+                        <!-- <th>ID EMPLEADO</th> -->
+                        <!-- <th>CLIENTE</th> -->
+                        <th>MESA</th>
+                        <th>IMPORTE</th>
+                        <th>AGREGAR</th>
+                        <th>ELIMINAR</th>
+                        <th>PEDIDOS</th>
+                    </thead>
+                    <tbody class="fila">
+                        <?php foreach ($Lproductos as $row){  ?>
+                            <tr class="">
+                                <!-- <th ><?php //echo $row['idcomanda'];?></th> -->
+                                <!-- <input type="hidden" name="idcomanda" value="<?php //echo $row['idcomanda']?>"> -->
+                                <!-- <th class=""><?php //echo $row['empleado'];?></th> -->
+                                <!-- <th class="fila"><?php //echo $row['dni'];?></th> -->
+                                <!-- <th class="fila"><?php //echo $row['idcliente'];?></th> -->
+                                <th class="fila"><?php echo $row['mesanum'];?></th>
+                                <th class="fila"><?php echo $row['total'];?></th>
+                                <!-- <th class="fila"><?php //echo $row['desea'];?></th> -->
+                                <th><div><a href="controlAgregarPlatillo.php?dni=<?php echo $dni?>&b=1&idcomanda=<?php echo $row['idcomanda']?>">Agregar Producto</a></div></th>
+                                <th><div><a href="controlAgregarPlatillo.php?dni=<?php echo $dni?>&b=2&idcomanda=<?php echo $row['idcomanda']?>">Cancelar Pedido</a></div></th>
+                                <th><div><a href="controlAgregarPlatillo.php?dni=<?php echo $dni?>&b=3&idcomanda=<?php echo $row['idcomanda']?>">Listar Pedidos</a></div></th>
+                            </tr>
+                            <?php } ?>
+                    </tbody>
+                </table>
+            </div>
 
 
         <hr>
@@ -95,4 +149,5 @@ class formGenerarComanda{
 }
 
 ?>
-<!-- . -->
+<!--  -->
+

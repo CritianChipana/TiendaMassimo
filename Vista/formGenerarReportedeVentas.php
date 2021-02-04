@@ -28,7 +28,7 @@ class  formGenerarReportedeVentas{
                             $objNav->navShow($listaPrivilegios);
                 ?>
                 <br>
-            <h2> <center>Búsqueda de Facturas y boletas</center></h2>
+            <h2> <center>Búsqueda de Boletas</center></h2>
             <nav class="navbar navbar-light " style="background-color: #bbdefb;">
                 <div class="container-fluid">
                     <!-- <h2> <center>Búsqueda de Facturas y boletas</center></h2> -->
@@ -70,7 +70,7 @@ class  formGenerarReportedeVentas{
                                 <div style="display: flex; float:right;">
                                     <input type="submit" class="btn btn-info"  formaction="../Controlador/controlOpcionReporte.php" name="reporte_boleta" buscar value="Reporte Boleta"  onclick="seleccionBoleta();">
                                     <div style="width: 32px;"></div>
-                                    <input type="submit" class="btn btn-info"  name="reporte_factura" buscar value="Reporte Factura"  onclick="seleccionFactura();">
+                                    <!-- <input type="submit" class="btn btn-info"  name="reporte_factura" buscar value="Reporte Factura"  onclick="seleccionFactura();"> -->
 
                                 </div>
                                 
