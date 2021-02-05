@@ -14,6 +14,11 @@
 		</head>
 		<body>
 		<p align="center">LISTADO DE MESAS</p>
+		<form action="controlVerificarAccesoMesa.php" method="POST">
+		<input type="hidden" name="dni" value=" <?php echo $listaprivilegios[0]['dni']; ?> ">
+		<input type="hidden" name="idbtn" value="1">
+		<p align="center"><input type="submit" name="btnaddmesa" value="AGREGAR MESA"></p>
+		</form>
 		<table border="1px" align="center" style="margin-top: 2rem">
 			<thead>
 				<tr>

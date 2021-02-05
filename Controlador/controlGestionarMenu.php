@@ -10,7 +10,6 @@
             return $data;
 
 		}
-
 		public function detallemenu($idmenu){
 
 			$objDetalle=new EntidadMenu;
@@ -18,30 +17,26 @@
             $data = $respuesta->fetch_all(MYSQLI_ASSOC);
 			return $data;
 		}
-
 		public function editarmenu($idmenu,$nombre,$descripcion,$precio,$estado){
 
 			$objMenu=new EntidadMenu;
 			$respuesta=$objMenu->editarmenu($idmenu,$nombre,$descripcion,$precio,$estado);
 		}
-
 		public function deshabilitarmenu($idmenu){
 
 			$objMenu=new EntidadMenu;
 			$respuesta=$objMenu->deshabilitarmenu($idmenu);
 
 		}
-
 		public function habilitarmenu($idmenu){
 
 			$objMenu=new EntidadMenu;
 			$respuesta=$objMenu->habilitarmenu($idmenu);
 		}
-
-		public function agregarmenu($nombre,$descripcion,$precio){
+		public function agregarmenu($nombre,$descripcion,$precio,$estado){
 
 			$producto= new EntidadMenu;
-			$agregarproducto=$producto->agregarproducto($nombre,$descripcion,$precio);
+			$agregarproducto=$producto->agregarmenu($nombre,$descripcion,$precio,$estado);
 		}
 	}
  ?>

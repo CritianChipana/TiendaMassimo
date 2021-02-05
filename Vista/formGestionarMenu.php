@@ -15,7 +15,20 @@
 
 		</head>
 		<body>
+			<?php
+					$a=11;
+					while ( $a>= 10) {
+						echo $a;
+						$a=$a-1;
+					}
+					echo $listamenu[1]['idproducto'];
+			 ?>
 		<p align="center">LISTADO DE MENUS</p>
+		<form action="controlVerificarAccesoMenu.php" method="POST">
+		<input type="hidden" name="dni" value=" <?php echo $listaprivilegios[0]['dni']; ?> ">
+		<input type="hidden" name="idbtn" value="1">
+		<p align="center"><input type="submit" name="btnaddmenu" value="AGREGAR MENU"></p>
+		</form>
 		<table border="1px" align="center" style="margin-top: 2rem">
 			<thead>
 				<tr>

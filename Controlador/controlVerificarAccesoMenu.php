@@ -29,7 +29,7 @@
 			$objForm=$objVista->formEditarMenuShow($objDetalle,$listaPrivilegios);
 
 		}
-		else if(isset($_POST['btnconfirmar'])){
+		else if(isset($_POST['btnconfirmaredit'])){
 			$dni=$_POST['dni'];
 			$idproducto=$_POST['idproducto'];
 			$nombrepr=$_POST['nombrepr'];
@@ -80,12 +80,40 @@
 			$objVista=new formGestionarMenu;
 			$objVistaM=$objVista->formGestionarMenuShow($objMenus,$listaPrivilegios);	
 		}
+		else if(isset($_POST['btnaddmenu'])){
+			$dni=$_POST['dni'];
+			include_once("../Modelo/EdetalleUsuario.php");
+			include_once("controlGestionarMenu.php");
+			include_once("../Vista/formEditarMenu.php");
+			$objDetalle = new EdetalleUsuario;
+			$listaPrivilegios = $objDetalle -> obtenerPrivilegios($dni);
+			$objVista=new formEditarMenu;
+			$objForm=$objVista->formEditarMenuShow(NULL,$listaPrivilegios);
+		}		
+		else if(isset($_POST['btnagregarmenu'])){
+			$dni=$_POST['dni'];
+			$nombrepr=$_POST['nombrepr'];
+			$descripcion=$_POST['descripcion'];
+			$precio=$_POST['precio'];
+			$estado=$_POST['estado'];
+			include_once("../Modelo/EdetalleUsuario.php");
+			include_once("controlGestionarMenu.php");
+			include_once("../Vista/formGestionarMenu.php");
+			$objDetalle = new EdetalleUsuario;
+			$listaPrivilegios = $objDetalle -> obtenerPrivilegios($dni);
+			$objMenu=new controlGestionarMenu;
+			$objADD=$objMenu->agregarmenu($nombrepr,$descripcion,$precio,$estado);
+			$objMenu2=new controlGestionarMenu;
+			$objMenus=$objMenu2->listarmenu();
+			$objVista=new formGestionarMenu;
+			$objVistaM=$objVista->formGestionarMenuShow($objMenus,$listaPrivilegios);
+		}
 	}
 
 	else
-	{
-		include_once("../shared/formMensajeSistema.php");
-		$objMensaje = new formMensajeSistema;
-		$objMensaje -> formMensajeSistemaShow("ACCESO DENEGADO NO SE HA INICIADO SESION","../index.php","","","","");
-	}
+{
+	include_once("../shared/formMensajeSistema.php");
+	$objMensaje = new formMensajeSistema;
+	$objMensaje -> formMensajeSistemaShow("ACCESO DENEGADO NO SE HA INICIADO SESION","../index.php","","","","");
+}
  ?>

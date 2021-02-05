@@ -29,7 +29,7 @@
 			$objForm=$objVista->formEditarMesaShow($objDetalle,$listaPrivilegios);
 
 		}
-		else if(isset($_POST['btnconfirmar'])){
+		else if(isset($_POST['btnconfirmaredit'])){
 			$dni=$_POST['dni'];
 			$idmesa=$_POST['idmesa'];
 			$numero=$_POST['numero'];
@@ -78,6 +78,33 @@
 			$objMenus=$objMenu2->listarmesa();
 			$objVista=new formGestionarMesa;
 			$objVistaM=$objVista->formGestionarMesaShow($objMenus,$listaPrivilegios);	
+		}
+		else if(isset($_POST['btnaddmesa'])){
+			$dni=$_POST['dni'];
+			include_once("../Modelo/EdetalleUsuario.php");
+			include_once("controlGestionarMesa.php");
+			include_once("../Vista/formEditarMesa.php");
+			$objDetalle = new EdetalleUsuario;
+			$listaPrivilegios = $objDetalle -> obtenerPrivilegios($dni);
+			$objVista=new formEditarMesa;
+			$objForm=$objVista->formEditarMesaShow(NULL,$listaPrivilegios);
+		}
+		else if(isset($_POST['btnagregarmesa'])){
+			$dni=$_POST['dni'];
+			$numero=$_POST['numero'];
+			$capacidad=$_POST['capacidad'];
+			$estado=$_POST['estado'];
+			include_once("../Modelo/EdetalleUsuario.php");
+			include_once("controlGestionarMesa.php");
+			include_once("../Vista/formGestionarMesa.php");
+			$objDetalle = new EdetalleUsuario;
+			$listaPrivilegios = $objDetalle -> obtenerPrivilegios($dni);
+			$objMenu=new controlGestionarMesa;
+			$objADD=$objMenu->agregarmesa($numero,$capacidad,$estado);
+			$objMenu2=new controlGestionarMesa;
+			$objMenus=$objMenu2->listarmesa();
+			$objVista=new formGestionarMesa;
+			$objVistaM=$objVista->formGestionarMesaShow($objMenus,$listaPrivilegios);
 		}
 	}
 
