@@ -84,11 +84,11 @@
 			$dni=$_POST['dni'];
 			include_once("../Modelo/EdetalleUsuario.php");
 			include_once("controlGestionarMenu.php");
-			include_once("../Vista/formEditarMenu.php");
+			include_once("../Vista/formAgregarMenu.php");
 			$objDetalle = new EdetalleUsuario;
 			$listaPrivilegios = $objDetalle -> obtenerPrivilegios($dni);
-			$objVista=new formEditarMenu;
-			$objForm=$objVista->formEditarMenuShow(NULL,$listaPrivilegios);
+			$objVista=new formAgregarMenu;
+			$objForm=$objVista->formAgregarMenuShow(NULL,$listaPrivilegios);
 		}		
 		else if(isset($_POST['btnagregarmenu'])){
 			$dni=$_POST['dni'];
