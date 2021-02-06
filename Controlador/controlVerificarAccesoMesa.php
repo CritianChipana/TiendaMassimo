@@ -117,6 +117,11 @@
 			$objVistaM=$objVista->formGestionarMesaShow($objMenus,$listaPrivilegios);				
 			}
 		}
+		else{
+			include_once("../shared/formMensajeSistema.php");
+			$objMensaje = new formMensajeSistema;
+			$objMensaje -> formMensajeSistemaShow("ACCESO DENEGADO NO SE HA INICIADO SESION","../index.php","","","","");
+		}
 	}
 else
 {
