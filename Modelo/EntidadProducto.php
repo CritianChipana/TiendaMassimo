@@ -10,24 +10,18 @@ class EntidadProducto extends conexion{
 
     public function listar_producto(){
         $consulta = "select * from producto";
-        $resultado = mysqli_query($this->conectar(),$consulta);
+        $resultado = mysqli_query($this->conectar(),$consulta) or die("No se encontro productos");
         $this->desconectar();
         return $resultado;
     }
-<<<<<<< HEAD
-    /*
-    public function agregarproducto($nombre,$descripcion,$precio){ 
-        $consulta="INSERT INTO producto (nombrepr,descripcion,precio) VALUES ('$nombre','$descripcion',$precio)";
-        $resultado=mysqli_query($this->conectar(),$consulta);
-   
-    } */
-=======
     public function agregarproducto($nombre,$descripcion,$precio){
 
         $consulta="INSERT INTO producto (nombrepr,descripcion,precio) VALUES ('$nombre','$descripcion',$precio)";
         $resultado=mysqli_query($this->conectar(),$consulta);
     }
 
->>>>>>> ebda0f39a136645122d22327b06ff40a93a3a5b8
+
+
+
 }
 ?>
