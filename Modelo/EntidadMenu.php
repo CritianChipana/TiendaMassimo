@@ -41,11 +41,11 @@
 			
 		}
 
-		public function agregarmenu($nombre,$descripcion,$precio){
+		public function agregarmenu($nombre,$descripcion,$precio,$estado){
 
-			$consulta="INSERT INTO producto (nombrepr,descripcion,precio) VALUES ('$nombre','$descripcion',$precio)";
+			$consulta="INSERT INTO producto (nombrepr,descripcion,precio,estado) VALUES ('$nombre','$descripcion',$precio,$estado)";
 			$resultado=mysqli_query($this->conectar(),$consulta);
-
+			return $resultado;
 		}
 	}
  ?>

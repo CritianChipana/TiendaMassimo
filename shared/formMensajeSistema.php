@@ -1,7 +1,7 @@
 <?php
 class formMensajeSistema
 {
-	public function formMensajeSistemaShow($mensaje,$link,$listaPrivilegios,$btn,$btn2)
+	public function formMensajeSistemaShow($mensaje,$link,$listaPrivilegios,$btn,$btn2,$btn3)
 	{
 	?>
 		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -17,10 +17,11 @@ class formMensajeSistema
 					?>
 					<?php
 					if (is_array($listaPrivilegios)) {?>
-					<form action="<?php echo $listaPrivilegios[0]['link']; ?> " method="POST" >	
+					<form action="<?php echo $link ?> " method="POST" >	
 						<input type="hidden" name="idbtn" value="1">
 						<input type="hidden" name="dni" value="<?php echo $listaPrivilegios[0]['dni'] ?>">
 						<input type="hidden" name="<?php echo $btn ?>" value="<?php echo $btn; ?>">	
+						<input type="hidden" name="<?php echo $btn2 ?>" value="<?php echo $btn3; ?>">	
 					<?php 
 					if (is_numeric($btn2)){?>
 						<input type="hidden" name="<?php echo $btn2 ?>" value="<?php echo $btn2 ?>">	

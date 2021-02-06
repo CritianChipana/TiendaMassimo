@@ -18,10 +18,10 @@
 			return $data;
 		}
 
-		public function editarmesa($idmesa,$numero,$capacidad,$estado){
+		public function editarmesa($idmesa,$capacidad){
 
 			$objMenu=new EntidadMesa;
-			$respuesta=$objMenu->editarmesa($idmesa,$numero,$capacidad,$estado);
+			$respuesta=$objMenu->editarmesa($idmesa,$capacidad);
 		}
 
 		public function deshabilitarmesa($idmesa){
@@ -37,10 +37,10 @@
 			$respuesta=$objMenu->habilitarmesa($idmesa);
 		}
 
-		public function agregarmesa($numero,$capacidad,$estado){
+		public function agregarmesa($capacidad){
 
 			$producto= new EntidadMesa;
-			$agregarproducto=$producto->agregarmesa($numero,$capacidad,$estado);
+			$agregarproducto=$producto->agregarmesa($capacidad);
 		}
 	}
  ?>
